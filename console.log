@@ -1,0 +1,49 @@
+//-------------------------- 3/14/2013 -- 22:19:04 -----
+Console trace is off.
+--------------------------------------------------------------------------------
+Video Initialization:
+--------------------------------------------------------------------------------
+Video initialization:
+   Accelerated OpenGL display device detected.
+
+Activating the OpenGL display device...
+Activating the OpenGL display device...
+OpenGLDevice::setScreenMode -- can't switch to resolution larger than desktop in windowed mode!
+Setting screen mode to 1024x768x32 (w)...
+Creating a new window...
+Acquiring a new device context...
+Pixel format set:
+  32 color bits, 24 depth bits, 8 stencil bits
+Creating a new rendering context...
+Making the new rendering context current...
+OpenGL driver information:
+  Vendor: Intel
+  Renderer: Intel(R) HD Graphics Family
+  Version: 3.0.0 - Build 8.15.10.2353
+OpenGL Init: Enabled Extensions
+  ARB_multitexture (Max Texture Units: 8)
+  EXT_blend_color
+  EXT_blend_minmax
+  EXT_compiled_vertex_array
+  EXT_texture_env_combine
+  EXT_packed_pixels
+  EXT_fog_coord
+  ARB_texture_compression
+  EXT_texture_compression_s3tc
+  3DFX_texture_compression_FXT1
+  (ARB|EXT)_texture_env_add
+  EXT_texture_filter_anisotropic (Max anisotropy: 16)
+OpenGL Init: Disabled Extensions
+  EXT_paletted_texture
+  NV_vertex_array_range
+  WGL_EXT_swap_control
+
+OpenGLDevice::setScreenMode -- can't switch to resolution larger than desktop in windowed mode!
+Max Texture Size reported as: 4096
+OpenGLDevice::setScreenMode -- can't switch to resolution larger than desktop in windowed mode!
+OpenAL Driver Init
+OpenAL Driver Init Success
+Shutting down the OpenGL display device...
+Making the GL rendering context not current...
+Deleting the GL rendering context...
+Releasing the device context...
