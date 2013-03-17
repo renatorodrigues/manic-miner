@@ -31,12 +31,69 @@ exec("./scripts/guy.cs");
 
 createSceneWindow();
 createScene();
+
 mySceneWindow.setScene(myScene);
-myScene.
+myScene.setDebugOn( "collision" );
+myScene.setDebugOn( "fps" );
 createBackground();
 createGuy();
+myModule.playerSpeed=2;
+myModule.gravity=0;
+new ActionMap(actionMap);
+actionMap.push();
 
+   // activateDirectInput();
+actionMap.bind(keyboard, "g", toggleG); 
+actionMap.bind(keyboard, right, playerRight); 
+actionMap.bind(keyboard, left, playerLeft); 
 }
+
+function playerRight(%val){
+	if(%val)
+   {
+      
+   
+	Guy.setLinearVelocityX(myModule.playerSpeed);
+	} else
+   {
+   	   
+   }
+}
+
+function playerLeft(%val){
+	if(%val)
+   {
+      
+   
+	Guy.setLinearVelocityX(-myModule.playerSpeed);
+	} else
+   {
+   	 
+   }
+}
+
+
+function toggleG(%val)
+{
+   if(%val)
+   {
+      //echo("g key down");
+   } else
+   {
+      //echo("g key up");
+      if(myModule.gravity==0){
+      	      myScene.Gravity= "0, 9.8";
+      	      myModule.gravity=1;
+      	      
+      }else{
+      	       myScene.Gravity="0, -9.8";
+      	       myModule.gravity=0;
+      	       
+      }
+   }
+}
+
+
 
 function myModule::destroy( %this )
 {

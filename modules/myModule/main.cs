@@ -37,13 +37,17 @@ myScene.setDebugOn( "collision" );
 myScene.setDebugOn( "fps" );
 createBackground();
 createGuy();
-myModule.playerSpeed=2;
+
+myModule.playerSpeed=7;
+myModule.playerVSpeed=20;
+Guy.setLinearVelocityY(-myModule.playerVSpeed);
 myModule.gravity=0;
 new ActionMap(actionMap);
 actionMap.push();
 
    // activateDirectInput();
 actionMap.bind(keyboard, "g", toggleG); 
+actionMap.bind(keyboard, space, toggleG); 
 actionMap.bind(keyboard, right, playerRight); 
 actionMap.bind(keyboard, left, playerLeft); 
 }
@@ -56,7 +60,7 @@ function playerRight(%val){
 	Guy.setLinearVelocityX(myModule.playerSpeed);
 	} else
    {
-   	   
+   	Guy.setLinearVelocityX(0);   
    }
 }
 
@@ -68,7 +72,7 @@ function playerLeft(%val){
 	Guy.setLinearVelocityX(-myModule.playerSpeed);
 	} else
    {
-   	 
+   	Guy.setLinearVelocityX(0); 
    }
 }
 
@@ -82,11 +86,13 @@ function toggleG(%val)
    {
       //echo("g key up");
       if(myModule.gravity==0){
-      	      myScene.Gravity= "0, 9.8";
+      	      //myScene.Gravity= "0, 9.8";
+      	      Guy.setLinearVelocityY(myModule.playerVSpeed);
       	      myModule.gravity=1;
       	      
       }else{
-      	       myScene.Gravity="0, -9.8";
+      	       //myScene.Gravity="0, -9.8";
+      	       Guy.setLinearVelocityY(-myModule.playerVSpeed);
       	       myModule.gravity=0;
       	       
       }

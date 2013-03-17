@@ -7,13 +7,7 @@ function createScene()
     // Create the scene.
     new Scene(myScene);
     myScene.Gravity="0, -9.8";
-   //%obj = new SceneObject();
-   // %obj.createEdgeCollisionShape();
-   // echo("@@@",myScene);
-     %obj = new Scroller();
-    %obj.setBodyType( "static" );
-    %obj.setImage( "ToyAssets:woodGround" );
-    myScene.add(%obj);
+   
     
 }
 
