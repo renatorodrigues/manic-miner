@@ -1,5 +1,7 @@
 function createGuy()
 {
+	
+	
  // Create the sprite.
     %guy = new Sprite(Guy);
     
@@ -16,8 +18,21 @@ function createGuy()
     // Set the layer closest to the camera (above the background)
     %guy.SceneLayer = 1;
     
+    //%image=new ImageAsset();
+    //%image.setFilterMode("Nearest");
+    //%image.setImageFile("myModule:fatguy");
+    
+    
+    
+    
     // Set the scroller to use an animation!
-    %guy.Image = "myModule:LoRez_SpaceShip";
+    %guy.Animation = "myModule:FatGuyAnim";
+    
+   // %guy.Image = "myModule:fatguy";
+    
+  //  %guy.setImageFrame(0);
+    
+    echo("@@@@@@@ ",%guy.getFilterMode());
 
     // This creates a box which so that collisions with the screen edges register properly
     // Calling createPolygonBoxCollisionShape() without arguments sets the box to the size of the 
@@ -26,10 +41,14 @@ function createGuy()
 
     //%guy.setCollisionLayers(all);
     %guy.setCollisionCallback( true );
+    
+    
    
     // Add the sprite to the scene.
     myScene.add( %guy );  
 }
+
+
 
 function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 {

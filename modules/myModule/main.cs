@@ -1,24 +1,4 @@
-//-----------------------------------------------------------------------------
-// Copyright (c) 2013 GarageGames, LLC
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to
-// deal in the Software without restriction, including without limitation the
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-// sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-// IN THE SOFTWARE.
-//-----------------------------------------------------------------------------
+//walls collision group = 1
 
 function myModule::create( %this )
 {
@@ -39,15 +19,23 @@ createBackground();
 createGuy();
 
 myModule.playerSpeed=7;
-myModule.playerVSpeed=20;
+myModule.playerVSpeed=40;
 Guy.setLinearVelocityY(-myModule.playerVSpeed);
 myModule.gravity=0;
+myModule.actualPlayerSpeed=0;
+myModule.leftKey=0;
+myModule.rightKey=0;
+myModule.tochdown=0;
+
+
 new ActionMap(actionMap);
 actionMap.push();
 
    // activateDirectInput();
 actionMap.bind(keyboard, "g", toggleG); 
 actionMap.bind(keyboard, space, toggleG); 
+actionMap.bind(keyboard, up, toggleG); 
+actionMap.bind(keyboard, down, toggleG); 
 actionMap.bind(keyboard, right, playerRight); 
 actionMap.bind(keyboard, left, playerLeft); 
 }
@@ -55,12 +43,27 @@ actionMap.bind(keyboard, left, playerLeft);
 function playerRight(%val){
 	if(%val)
    {
+   	   
+   	   myModule.rightKey=1;
       
-   
-	Guy.setLinearVelocityX(myModule.playerSpeed);
+   	   if(myModule.leftKey==1){
+   	   	 Guy.setLinearVelocityX(0);  
+   	   }else{
+		Guy.setLinearVelocityX(myModule.playerSpeed);
+		   myModule.actualPlayerSpeed=myModule.playerSpeed;
+		     Guy.Animation = "myModule:FatGuyAnim";
+	   }
 	} else
    {
-   	Guy.setLinearVelocityX(0);   
+   	   myModule.rightKey=0;
+   	   if(myModule.leftKey==1){
+   	   	 Guy.setLinearVelocityX(-myModule.playerSpeed);  
+   	   	   Guy.Animation = "myModule:FatGuyAnim_Inv";
+   	   }else{
+		   if(myModule.actualPlayerSpeed>0){
+			   Guy.setLinearVelocityX(0);   
+		   }
+   	   }
    }
 }
 
@@ -68,11 +71,29 @@ function playerLeft(%val){
 	if(%val)
    {
       
-   
-	Guy.setLinearVelocityX(-myModule.playerSpeed);
+   	   myModule.leftKey=1;
+   	   
+   	    if(myModule.rightKey==1){
+   	   	 Guy.setLinearVelocityX(0);  
+   	   }else{
+		Guy.setLinearVelocityX(-myModule.playerSpeed);
+		myModule.actualPlayerSpeed=-myModule.playerSpeed;
+		 Guy.Animation = "myModule:FatGuyAnim_Inv";
+		
+	   }
 	} else
    {
-   	Guy.setLinearVelocityX(0); 
+   	   myModule.leftKey=0;
+   	   
+   	   if(myModule.rightKey==1){
+   	   	 Guy.setLinearVelocityX(myModule.playerSpeed);  
+   	   	 Guy.Animation = "myModule:FatGuyAnim";
+   	   }else{
+		    if(myModule.actualPlayerSpeed<0){
+			   Guy.setLinearVelocityX(0);   
+		   }
+   	   }
+   	
    }
 }
 
@@ -89,11 +110,13 @@ function toggleG(%val)
       	      //myScene.Gravity= "0, 9.8";
       	      Guy.setLinearVelocityY(myModule.playerVSpeed);
       	      myModule.gravity=1;
+      	      Guy.setAngle(180);
       	      
       }else{
       	       //myScene.Gravity="0, -9.8";
       	       Guy.setLinearVelocityY(-myModule.playerVSpeed);
       	       myModule.gravity=0;
+      	       Guy.setAngle(0);
       	       
       }
    }

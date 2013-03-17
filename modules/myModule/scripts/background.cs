@@ -17,6 +17,7 @@ function createBackground()
     
     // Set to the furthest background layer.
     %background.SceneLayer = 31;
+    %background.SceneGroup = 1 ;
     
     // Sets the image to use for our background
     //%background.Image = "ToyAssets:skyBackground";

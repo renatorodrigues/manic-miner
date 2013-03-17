@@ -52,7 +52,7 @@ function createGuy()
 
 function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 {
-	echo("collision");
+	echo(%sceneobject.getSceneGroup());
 }
 
 
