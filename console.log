@@ -1,49 +1,47 @@
-//-------------------------- 3/14/2013 -- 22:19:04 -----
+//-------------------------- 3/17/2013 -- 03:01:55 -----
 Console trace is off.
---------------------------------------------------------------------------------
-Video Initialization:
---------------------------------------------------------------------------------
-Video initialization:
-   Accelerated OpenGL display device detected.
-
+using display 0x42732c0
 Activating the OpenGL display device...
-Activating the OpenGL display device...
-OpenGLDevice::setScreenMode -- can't switch to resolution larger than desktop in windowed mode!
-Setting screen mode to 1024x768x32 (w)...
-Creating a new window...
-Acquiring a new device context...
-Pixel format set:
-  32 color bits, 24 depth bits, 8 stencil bits
-Creating a new rendering context...
-Making the new rendering context current...
+ OpenGLDevice activating...
 OpenGL driver information:
-  Vendor: Intel
-  Renderer: Intel(R) HD Graphics Family
-  Version: 3.0.0 - Build 8.15.10.2353
+  Vendor: Intel Inc.
+  Renderer: Intel HD Graphics 3000 OpenGL Engine
+  Version: 2.1 INTEL-8.10.44
 OpenGL Init: Enabled Extensions
   ARB_multitexture (Max Texture Units: 8)
   EXT_blend_color
   EXT_blend_minmax
-  EXT_compiled_vertex_array
   EXT_texture_env_combine
   EXT_packed_pixels
   EXT_fog_coord
   ARB_texture_compression
   EXT_texture_compression_s3tc
-  3DFX_texture_compression_FXT1
   (ARB|EXT)_texture_env_add
-  EXT_texture_filter_anisotropic (Max anisotropy: 16)
+  EXT_texture_filter_anisotropic (Max anisotropy: 16.000000)
+  Vertical Sync
+  ATI_FSAA
 OpenGL Init: Disabled Extensions
   EXT_paletted_texture
+  EXT_compiled_vertex_array
   NV_vertex_array_range
-  WGL_EXT_swap_control
+  3DFX_texture_compression_FXT1
 
-OpenGLDevice::setScreenMode -- can't switch to resolution larger than desktop in windowed mode!
-Max Texture Size reported as: 4096
-OpenGLDevice::setScreenMode -- can't switch to resolution larger than desktop in windowed mode!
+ set screen mode 1024 x 768 x 32, windowed, force it, dont repaint
+Max Texture Size reported as: 8192
+ set screen mode 1024 x 768 x 32, windowed, dont force it, repaint
+Killing the texture manager...
+Resurrecting the texture manager...
 OpenAL Driver Init
 OpenAL Driver Init Success
+Failed to load profile bitmap ((null))
+modules/myModule/scripts/guy.cs (35): Unknown command getFilterMode.
+  Object Guy(1118) Guy -> Sprite -> SpriteBase -> SceneObject -> BehaviorComponent -> DynamicConsoleMethodComponent -> SimComponent -> SimObject
+@@@@@@@ 
+SimObject::assignName - Assigning name 'ActionMap' to instance of object with type 'ActionMap'. This can cause namespace linking issues.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for ActionMap for SimObject.
+Error: cannot change namespace parent linkage of ActionMap from SimObject to ActionMap.
+collision
+collision
+Namespace::unlinkClass - cannot unlink namespace parent linkage for ActionMap for SimObject.
 Shutting down the OpenGL display device...
-Making the GL rendering context not current...
-Deleting the GL rendering context...
-Releasing the device context...
+Killing the texture manager...

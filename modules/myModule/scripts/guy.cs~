@@ -1,0 +1,39 @@
+function createGuy()
+{
+ // Create the sprite.
+    %guy = new Sprite(Guy);
+    
+    // We want our spaceship to move and be affected by gravity and various forces
+    // so we set its BodyType to dynamic
+    %guy.setBodyType( dynamic );
+       
+    // Set the position.
+    %guy.Position = "0 30";
+
+    // Set the size.        
+    %guy.Size = "4 4";
+    
+    // Set the layer closest to the camera (above the background)
+    %guy.SceneLayer = 1;
+    
+    // Set the scroller to use an animation!
+    %guy.Image = "myModule:LoRez_SpaceShip";
+
+    // This creates a box which so that collisions with the screen edges register properly
+    // Calling createPolygonBoxCollisionShape() without arguments sets the box to the size of the 
+    // sceneobject automatically.
+    %guy.createPolygonBoxCollisionShape();
+
+    //%guy.setCollisionLayers(all);
+    %guy.setCollisionCallback( true );
+   
+    // Add the sprite to the scene.
+    myScene.add( %guy );  
+}
+
+function Guy::onCollision(%this, %sceneobject, %collisiondetails)
+{
+	echo("collision");
+}
+
+
