@@ -41,7 +41,7 @@ function createGuy()
 
     //%guy.setCollisionLayers(all);
     %guy.setCollisionCallback( true );
-    
+     Guy.stopAnimation();
     
    
     // Add the sprite to the scene.

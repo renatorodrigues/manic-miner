@@ -1,5 +1,5 @@
 <AnimationAsset
-    AnimationName="FatGuyAnim"
+    AssetName="FatGuyAnim"
     Image="@asset=myModule:FatGuy"
     AnimationFrames="0 1 2"
     AnimationTime="1"    

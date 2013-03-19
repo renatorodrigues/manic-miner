@@ -1,3 +1,9 @@
 <ImageAsset
-    AssetName="LoRez_SpaceShip"
-    ImageFile="ship4.png" />
+    AssetName="FatGuy"
+    ImageFile="fatguy.png"
+    FilterMode="Nearest"
+    CellCountX="3"
+    CellCountY="1"
+    CellWidth="8"
+    CellHeight="15"
+    />

@@ -47,21 +47,25 @@ function playerRight(%val){
    	   myModule.rightKey=1;
       
    	   if(myModule.leftKey==1){
-   	   	 Guy.setLinearVelocityX(0);  
+   	   	 Guy.setLinearVelocityX(0); 
+   	   	
+   	   	 Guy.stopAnimation();
    	   }else{
 		Guy.setLinearVelocityX(myModule.playerSpeed);
 		   myModule.actualPlayerSpeed=myModule.playerSpeed;
-		     Guy.Animation = "myModule:FatGuyAnim";
+		     Guy.playAnimation("myModule:FatGuyAnim");
 	   }
 	} else
    {
    	   myModule.rightKey=0;
    	   if(myModule.leftKey==1){
    	   	 Guy.setLinearVelocityX(-myModule.playerSpeed);  
-   	   	   Guy.Animation = "myModule:FatGuyAnim_Inv";
+   	   	   Guy.playAnimation("myModule:FatGuyAnim_Inv");
    	   }else{
 		   if(myModule.actualPlayerSpeed>0){
-			   Guy.setLinearVelocityX(0);   
+			   Guy.setLinearVelocityX(0);
+			   
+			    Guy.stopAnimation();
 		   }
    	   }
    }
@@ -75,10 +79,12 @@ function playerLeft(%val){
    	   
    	    if(myModule.rightKey==1){
    	   	 Guy.setLinearVelocityX(0);  
+   	   	 myModule.actualPlayerSpeed=0;
+   	   	 Guy.stopAnimation();
    	   }else{
 		Guy.setLinearVelocityX(-myModule.playerSpeed);
 		myModule.actualPlayerSpeed=-myModule.playerSpeed;
-		 Guy.Animation = "myModule:FatGuyAnim_Inv";
+		 Guy.playAnimation("myModule:FatGuyAnim_Inv");
 		
 	   }
 	} else
@@ -87,10 +93,14 @@ function playerLeft(%val){
    	   
    	   if(myModule.rightKey==1){
    	   	 Guy.setLinearVelocityX(myModule.playerSpeed);  
-   	   	 Guy.Animation = "myModule:FatGuyAnim";
+   	   	 Guy.playAnimation("myModule:FatGuyAnim");
+   	   	 myModule.actualPlayerSpeed=myModule.playerSpeed;
+   	   	 
    	   }else{
 		    if(myModule.actualPlayerSpeed<0){
-			   Guy.setLinearVelocityX(0);   
+			   Guy.setLinearVelocityX(0); 
+			    myModule.actualPlayerSpeed=0;
+			     Guy.stopAnimation();
 		   }
    	   }
    	

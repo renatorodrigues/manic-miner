@@ -4,6 +4,6 @@
     FilterMode="Nearest"
     CellCountX="3"
     CellCountY="1"
-    CellWidth="8"
+    CellWidth="10"
     CellHeight="15"
     />
