@@ -52,7 +52,10 @@ function createGuy()
 
 function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 {
-	echo(%sceneobject.getSceneGroup());
+	if(%sceneobject.getSceneGroup()==1){
+		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
+		myModule.touchdown=1;
+	}
 }
 
 

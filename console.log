@@ -1,4 +1,4 @@
-//-------------------------- 3/19/2013 -- 20:10:55 -----
+//-------------------------- 3/20/2013 -- 01:56:20 -----
 Console trace is off.
 using display 0x42732c0
 Activating the OpenGL display device...
@@ -40,17 +40,10 @@ modules/myModule/scripts/guy.cs (35): Unknown command getFilterMode.
 SimObject::assignName - Assigning name 'ActionMap' to instance of object with type 'ActionMap'. This can cause namespace linking issues.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for ActionMap for SimObject.
 Error: cannot change namespace parent linkage of ActionMap from SimObject to ActionMap.
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
-1
+myModule:FatGuyAnim
+toinv
+myModule:FatGuyAnim_Inv
+toanim
 Namespace::unlinkClass - cannot unlink namespace parent linkage for ActionMap for SimObject.
 Shutting down the OpenGL display device...
 Killing the texture manager...

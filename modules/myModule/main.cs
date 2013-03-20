@@ -25,7 +25,7 @@ myModule.gravity=0;
 myModule.actualPlayerSpeed=0;
 myModule.leftKey=0;
 myModule.rightKey=0;
-myModule.tochdown=0;
+myModule.touchdown=0;
 
 
 new ActionMap(actionMap);
@@ -48,23 +48,35 @@ function playerRight(%val){
       
    	   if(myModule.leftKey==1){
    	   	 Guy.setLinearVelocityX(0); 
-   	   	
+   	   	  myModule.actualPlayerSpeed=0;
+   	   	//myModule.playerSpeed=0;
    	   	 Guy.stopAnimation();
    	   }else{
 		Guy.setLinearVelocityX(myModule.playerSpeed);
-		   myModule.actualPlayerSpeed=myModule.playerSpeed;
-		     Guy.playAnimation("myModule:FatGuyAnim");
+		myModule.actualPlayerSpeed=myModule.playerSpeed;
+		
+		if(mRound(Guy.getAngle())!=180){
+   	   	 	 Guy.playAnimation("myModule:FatGuyAnim");
+   	   	 }else{
+   	   	 	 Guy.playAnimation("myModule:FatGuyAnim_Inv");
+   	   	 }
 	   }
 	} else
    {
    	   myModule.rightKey=0;
    	   if(myModule.leftKey==1){
-   	   	 Guy.setLinearVelocityX(-myModule.playerSpeed);  
-   	   	   Guy.playAnimation("myModule:FatGuyAnim_Inv");
+   	   	 Guy.setLinearVelocityX(-myModule.playerSpeed); 
+   	   	  myModule.actualPlayerSpeed=-myModule.playerSpeed;
+   	   	  if(mRound(Guy.getAngle())!=180){ 
+			Guy.playAnimation("myModule:FatGuyAnim_Inv");
+		}else{
+			Guy.playAnimation("myModule:FatGuyAnim");
+		}
+		
    	   }else{
 		   if(myModule.actualPlayerSpeed>0){
 			   Guy.setLinearVelocityX(0);
-			   
+			    myModule.actualPlayerSpeed=0;
 			    Guy.stopAnimation();
 		   }
    	   }
@@ -84,7 +96,11 @@ function playerLeft(%val){
    	   }else{
 		Guy.setLinearVelocityX(-myModule.playerSpeed);
 		myModule.actualPlayerSpeed=-myModule.playerSpeed;
-		 Guy.playAnimation("myModule:FatGuyAnim_Inv");
+		if(mRound(Guy.getAngle())!=180){ 
+			Guy.playAnimation("myModule:FatGuyAnim_Inv");
+		}else{
+			Guy.playAnimation("myModule:FatGuyAnim");
+		}
 		
 	   }
 	} else
@@ -93,14 +109,18 @@ function playerLeft(%val){
    	   
    	   if(myModule.rightKey==1){
    	   	 Guy.setLinearVelocityX(myModule.playerSpeed);  
-   	   	 Guy.playAnimation("myModule:FatGuyAnim");
+   	   	 if(mRound(Guy.getAngle())!=180){
+   	   	 	 Guy.playAnimation("myModule:FatGuyAnim");
+   	   	 }else{
+   	   	 	 Guy.playAnimation("myModule:FatGuyAnim_Inv");
+   	   	 }
    	   	 myModule.actualPlayerSpeed=myModule.playerSpeed;
    	   	 
    	   }else{
 		    if(myModule.actualPlayerSpeed<0){
 			   Guy.setLinearVelocityX(0); 
-			    myModule.actualPlayerSpeed=0;
-			     Guy.stopAnimation();
+			   myModule.actualPlayerSpeed=0;
+			   Guy.stopAnimation();
 		   }
    	   }
    	
@@ -116,18 +136,35 @@ function toggleG(%val)
    } else
    {
       //echo("g key up");
-      if(myModule.gravity==0){
-      	      //myScene.Gravity= "0, 9.8";
-      	      Guy.setLinearVelocityY(myModule.playerVSpeed);
-      	      myModule.gravity=1;
-      	      Guy.setAngle(180);
-      	      
-      }else{
-      	       //myScene.Gravity="0, -9.8";
-      	       Guy.setLinearVelocityY(-myModule.playerVSpeed);
-      	       myModule.gravity=0;
-      	       Guy.setAngle(0);
-      	       
+      if(myModule.touchdown==1){
+	      if(myModule.gravity==0){
+		      //myScene.Gravity= "0, 9.8";
+		      Guy.setLinearVelocityY(myModule.playerVSpeed);
+		      myModule.gravity=1;
+		      Guy.setAngle(180);
+		      myModule.touchdown=0;
+		      
+		      
+	      }else{
+		       //myScene.Gravity="0, -9.8";
+		       Guy.setLinearVelocityY(-myModule.playerVSpeed);
+		       myModule.gravity=0;
+		       Guy.setAngle(0);
+		       myModule.touchdown=0;
+		       
+	      }
+	      echo(Guy.getAnimation());
+	      if(Guy.getAnimation()$="myModule:FatGuyAnim_Inv"){
+	      	      echo("toanim");
+		      	      Guy.playAnimation("myModule:FatGuyAnim");
+		      }else{
+		      	      echo("toinv");
+		      	      Guy.playAnimation("myModule:FatGuyAnim_Inv");
+		      }
+		       if(myModule.actualPlayerSpeed<=0){
+		        Guy.stopAnimation();
+		       	       
+		       }
       }
    }
 }
