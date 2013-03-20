@@ -13,7 +13,7 @@ function createBackground()
 
     // Set the object's size. Notice that this corresponds to the size of our camera, which was created in
     // scenewindow.cs. The background will thus cover the entirety of our scenewindow.
-    %background.Size = "100 75";
+    %background.Size = "100 62.5";
     
     // Set to the furthest background layer.
     %background.SceneLayer = 31;
@@ -24,10 +24,10 @@ function createBackground()
     %background.BackgroundColor = "Black";
     %background.UseBackgroundColor = true;
     // Create border collisions.
-    %background.createEdgeCollisionShape( -50, -37.5, -50, 37.5 );
-    %background.createEdgeCollisionShape( 50, -37.5, 50, 37.5 );
+    %background.createEdgeCollisionShape( -50, -25, -50, 37.5 );
+    %background.createEdgeCollisionShape( 50, -25, 50, 37.5);
     %background.createEdgeCollisionShape( -50, 37.5, 50, 37.5 );
-    %background.createEdgeCollisionShape( -50, -37.5, 50, -37.5 );   
+    %background.createEdgeCollisionShape( -50, -25, 50, -25 );   
    
     //%background.setDefaultRestitution(1);
     // Add the sprite to the scene.
