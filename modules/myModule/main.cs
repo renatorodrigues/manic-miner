@@ -5,6 +5,7 @@ function myModule::create( %this )
 exec("./scripts/scenewindow.cs");
 exec("./scripts/scene.cs");
 exec("./gui/guiProfiles.cs");
+exec("./scripts/fileIO.cs");
 
 exec("./scripts/background.cs");
 exec("./scripts/guy.cs");
@@ -26,7 +27,7 @@ myModule.actualPlayerSpeed=0;
 myModule.leftKey=0;
 myModule.rightKey=0;
 myModule.touchdown=0;
-
+filewrite();
 
 new ActionMap(actionMap);
 actionMap.push();

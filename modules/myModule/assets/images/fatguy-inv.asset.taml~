@@ -1,0 +1,9 @@
+<ImageAsset
+    AssetName="FatGuy_Inv"
+    ImageFile="fatguy-inv.png"
+    FilterMode="Nearest"
+    CellCountX="3"
+    CellCountY="1"
+    CellWidth="8"
+    CellHeight="15"
+    />
