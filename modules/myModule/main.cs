@@ -18,8 +18,8 @@ myScene.setDebugOn( "fps" );
 createBackground();
 createGuy();
 
-myModule.playerSpeed=7;
-myModule.playerVSpeed=40;
+myModule.playerSpeed=14;
+myModule.playerVSpeed=50;
 Guy.setLinearVelocityY(-myModule.playerVSpeed);
 myModule.gravity=0;
 myModule.actualPlayerSpeed=0;
@@ -41,6 +41,7 @@ actionMap.bind(keyboard, left, playerLeft);
 }
 
 function playerRight(%val){
+	Guy.onUpdate();
 	if(%val)
    {
    	   
@@ -53,6 +54,7 @@ function playerRight(%val){
    	   	 Guy.stopAnimation();
    	   }else{
 		Guy.setLinearVelocityX(myModule.playerSpeed);
+		//Guy.applyForce("20,0", Guy.getWorldCenter());
 		myModule.actualPlayerSpeed=myModule.playerSpeed;
 		
 		if(mRound(Guy.getAngle())!=180){
@@ -66,6 +68,7 @@ function playerRight(%val){
    	   myModule.rightKey=0;
    	   if(myModule.leftKey==1){
    	   	 Guy.setLinearVelocityX(-myModule.playerSpeed); 
+   	   	//Guy.applyForce("-20,0", Guy.getWorldCenter());
    	   	  myModule.actualPlayerSpeed=-myModule.playerSpeed;
    	   	  if(mRound(Guy.getAngle())!=180){ 
 			Guy.playAnimation("myModule:FatGuyAnim_Inv");
@@ -84,6 +87,7 @@ function playerRight(%val){
 }
 
 function playerLeft(%val){
+	Guy.onUpdate();
 	if(%val)
    {
       
@@ -95,6 +99,7 @@ function playerLeft(%val){
    	   	 Guy.stopAnimation();
    	   }else{
 		Guy.setLinearVelocityX(-myModule.playerSpeed);
+		//Guy.applyForce("-20", Guy.getWorldCenter());
 		myModule.actualPlayerSpeed=-myModule.playerSpeed;
 		if(mRound(Guy.getAngle())!=180){ 
 			Guy.playAnimation("myModule:FatGuyAnim_Inv");
@@ -108,7 +113,8 @@ function playerLeft(%val){
    	   myModule.leftKey=0;
    	   
    	   if(myModule.rightKey==1){
-   	   	 Guy.setLinearVelocityX(myModule.playerSpeed);  
+   	   	 Guy.setLinearVelocityX(myModule.playerSpeed);
+   	   	// Guy.applyForce("20,0", Guy.getWorldCenter());
    	   	 if(mRound(Guy.getAngle())!=180){
    	   	 	 Guy.playAnimation("myModule:FatGuyAnim");
    	   	 }else{
@@ -130,6 +136,7 @@ function playerLeft(%val){
 
 function toggleG(%val)
 {
+	Guy.onUpdate();
    if(%val)
    {
       //echo("g key down");
@@ -137,6 +144,7 @@ function toggleG(%val)
    {
       //echo("g key up");
       if(myModule.touchdown==1){
+      	      myScene.Gravity="0, 0";
 	      if(myModule.gravity==0){
 		      //myScene.Gravity= "0, 9.8";
 		      Guy.setLinearVelocityY(myModule.playerVSpeed);

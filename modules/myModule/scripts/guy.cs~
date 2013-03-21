@@ -17,7 +17,8 @@ function createGuy()
     
     // Set the layer closest to the camera (above the background)
     %guy.SceneLayer = 1;
-    
+    %guy.Friction="0.0";
+    %guy.FixedAngle = true;
     //%image=new ImageAsset();
     //%image.setFilterMode("Nearest");
     //%image.setImageFile("myModule:fatguy");
@@ -41,7 +42,7 @@ function createGuy()
 
     //%guy.setCollisionLayers(all);
     %guy.setCollisionCallback( true );
-    
+     Guy.stopAnimation();
     
    
     // Add the sprite to the scene.
@@ -52,7 +53,18 @@ function createGuy()
 
 function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 {
-	echo("collision");
+	
+	echo(%collisiondetails);
+	if(%sceneobject.getSceneGroup()==1){
+		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
+		myModule.touchdown=1;
+		if(myModule.gravity==0){
+		
+			myScene.Gravity="0, -9.8";
+		}else{
+			myScene.Gravity= "0, 9.8";
+		}
+	}
 }
 
 
