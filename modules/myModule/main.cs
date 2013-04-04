@@ -16,8 +16,9 @@ createSceneWindow();
 createScene();
 myModule.nfloor=0;
 myModule.cfloor=0;
+myModule.deleteBlocks=0;
 mySceneWindow.setScene(myScene);
-//myScene.setDebugOn( "collision" );
+myScene.setDebugOn( "collision" );
 myScene.setDebugOn( "fps" );
 createBackground();
 
@@ -29,6 +30,7 @@ createBackground();
     addClearingFloor(0,10,20,2);
 createGuy();
 
+
 myModule.playerSpeed=14;
 myModule.playerVSpeed=50;
 Guy.setLinearVelocityY(-myModule.playerVSpeed);
@@ -37,6 +39,7 @@ myModule.actualPlayerSpeed=0;
 myModule.leftKey=0;
 myModule.rightKey=0;
 myModule.touchdown=0;
+
 filewrite();
 
 new ActionMap(actionMap);

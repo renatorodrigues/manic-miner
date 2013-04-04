@@ -55,7 +55,7 @@ function createGuy()
 }
 
 function Guy::onUpdate(%this)
-{
+{	//echo("update");
 	//echo(%this.getContactCount ());
   // %this.updateHorizontal();
    %this.updateVertical();
@@ -64,8 +64,11 @@ function Guy::onUpdate(%this)
 
 function Guy::updateVertical(%this)
 {
+	echo(%this.getContactCount ());
 	
-if(%this.getContactCount ()<1){
+	
+	
+if(%this.getContactCount ()-myModule.deleteBlocks<1){
 	 if(myModule.gravity!=0){
 		      //myScene.Gravity= "0, 9.8";
 		      Guy.setLinearVelocityY(myModule.playerVSpeed);
@@ -84,7 +87,7 @@ if(%this.getContactCount ()<1){
    /*%yVelocity = %this.getLinearVelocityY();
    
    %this.setLinearVelocityY(5);
-   %collision = %this.castCollision(0.005);
+   
    
    %normalX = getWord(%collision, 4);
    %normalY = getWord(%collision, 5);
@@ -106,6 +109,7 @@ if(%this.getContactCount ()<1){
       %this.againstLeftWall = true;
       %this.setLinearVelocityX(0);
       %this.setLinearVelocityY(%yVelocity);
+      
       return;
    }
    
@@ -169,7 +173,8 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 		%sceneobject.setHeight(%sceneobject.getHeight()-0.1);
 		echo(%sceneobject.getHeight());
 		if(%sceneobject.getHeight()<0.2){
-			%sceneobject.safeDelete	();	
+			%sceneobject.safeDelete();
+			myModule.deleteBlocks++;
 		}
 	}
 }
