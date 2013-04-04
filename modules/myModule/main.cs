@@ -39,7 +39,7 @@ myModule.actualPlayerSpeed=0;
 myModule.leftKey=0;
 myModule.rightKey=0;
 myModule.touchdown=0;
-
+myModule.tick=0;
 filewrite();
 
 new ActionMap(actionMap);
@@ -176,14 +176,14 @@ function toggleG(%val)
 		       
 	      }
 	      echo(Guy.getAnimation());
-	      if(Guy.getAnimation()$="myModule:FatGuyAnim_Inv"){
-	      	      echo("toanim");
+	      		if(Guy.getAnimation()$="myModule:FatGuyAnim_Inv"){
+	      	      	echo("toanim");
 		      	      Guy.playAnimation("myModule:FatGuyAnim");
 		      }else{
 		      	      echo("toinv");
 		      	      Guy.playAnimation("myModule:FatGuyAnim_Inv");
 		      }
-		       if(myModule.actualPlayerSpeed<=0){
+		       if(myModule.actualPlayerSpeed<0.1 && myModule.actualPlayerSpeed>-0.1){
 		        Guy.stopAnimation();
 		       	       
 		       }

@@ -38,8 +38,12 @@ function createGuy()
     // This creates a box which so that collisions with the screen edges register properly
     // Calling createPolygonBoxCollisionShape() without arguments sets the box to the size of the 
     // sceneobject automatically.
-    %guy.createPolygonBoxCollisionShape();
+    %guy.createPolygonBoxCollisionShape(4,3,0,-0.5);
 
+  
+    
+   
+    
     //%guy.setCollisionLayers(all);
     %guy.setCollisionCallback( true );
      Guy.stopAnimation();
@@ -48,14 +52,14 @@ function createGuy()
     //Guy.schedule(32, Guy,"onUpdate", Guy);
    
     // Add the sprite to the scene
-    
+    echo(%guy);
     myScene.add( %guy );  
     
     
 }
 
 function Guy::onUpdate(%this)
-{
+{	//echo("update");
 	//echo(%this.getContactCount ());
   // %this.updateHorizontal();
    %this.updateVertical();
@@ -64,9 +68,22 @@ function Guy::onUpdate(%this)
 
 function Guy::updateVertical(%this)
 {
+	//echo(%this.getContactCount ());
 	
-if(%this.getContactCount ()<1){
-	 if(myModule.gravity!=0){
+	for(%i=0;%i<%this.getContactCount ();%i++) {
+		if(%this.getContact(%i)$=""){
+		}else{
+		//	myScene.getObject( getWord(%this.getContact(%i),0));
+		//echo("obj    "@%this.getContact(%i));
+		//echo(true);
+		}
+	}
+	//echo(%this.getAABB());	
+	
+if(%this.getContactCount ()-myModule.deleteBlocks<1){
+	
+	
+	if(myModule.gravity!=0){
 		      //myScene.Gravity= "0, 9.8";
 		      Guy.setLinearVelocityY(myModule.playerVSpeed);
 		      
@@ -84,7 +101,7 @@ if(%this.getContactCount ()<1){
    /*%yVelocity = %this.getLinearVelocityY();
    
    %this.setLinearVelocityY(5);
-   %collision = %this.castCollision(0.005);
+   
    
    %normalX = getWord(%collision, 4);
    %normalY = getWord(%collision, 5);
@@ -106,6 +123,7 @@ if(%this.getContactCount ()<1){
       %this.againstLeftWall = true;
       %this.setLinearVelocityX(0);
       %this.setLinearVelocityY(%yVelocity);
+      
       return;
    }
    
@@ -152,9 +170,8 @@ if(%this.getContactCount ()<1){
 
 function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 {
-	
-	echo(%collisiondetails);
-	if(%sceneobject.getSceneGroup()==1){
+	echo(%sceneobject);
+	if(%sceneobject.getSceneGroup()==1 || %sceneobject.getSceneGroup()==2){
 		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
 		myModule.touchdown=1;
 		if(myModule.gravity==0){
@@ -162,6 +179,19 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 		//	myScene.Gravity="0, -9.8";
 		}else{
 		//	myScene.Gravity= "0, 9.8";
+		}
+	}
+	
+	if(%sceneobject.getSceneGroup()==2){
+		%sceneobject.setHeight(%sceneobject.getHeight()-0.5);
+		echo(%sceneobject.getHeight());
+		//%sceneobject.clearCollisionShapes();
+		//%sceneobject.createPolygonBoxCollisionShape();
+		if(%sceneobject.getHeight()<0.2){
+			//%sceneobject.safeDelete();
+			
+			%sceneobject.setActive( false );
+			myModule.deleteBlocks++;
 		}
 	}
 }

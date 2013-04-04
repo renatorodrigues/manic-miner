@@ -69,10 +69,42 @@ function Guy::onUpdate(%this)
 function Guy::updateVertical(%this)
 {
 	//echo(%this.getContactCount ());
+	myModule.tick++;
+	//echo(myModule.tick);
+	//echo(%this.getRenderPosition());
 	
+	if(myModule.gravity==0){
+		%ny=getWord(%this.getRenderPosition(),1)-2.1;
+	}else{
+		%ny=getWord(%this.getRenderPosition(),1)+2.1;
+	}
+	%obj=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0) SPC %ny);
+	echo(getWord(%this.getRenderPosition(),0)+2 SPC %ny);
+	if(%obj$=""){
+		
+	}else{
+		if(myModule.tick>15){
+			myModule.tick=0;
+		echo(getWord(%obj,0).getSceneGroup());
+		%sceneobject=getWord(%obj,0);
+		if(%sceneobject.getSceneGroup()==2){
+		%sceneobject.setHeight(%sceneobject.getHeight()-0.5);
+		echo(%sceneobject.getHeight());
+		//%sceneobject.clearCollisionShapes();
+		//%sceneobject.createPolygonBoxCollisionShape();
+		if(%sceneobject.getHeight()<0.2){
+			//%sceneobject.safeDelete();
+			
+			%sceneobject.setActive( false );
+			myModule.deleteBlocks++;
+		}
+		}
+	}
+	}
 	for(%i=0;%i<%this.getContactCount ();%i++) {
 		if(%this.getContact(%i)$=""){
 		}else{
+			
 		//	myScene.getObject( getWord(%this.getContact(%i),0));
 		//echo("obj    "@%this.getContact(%i));
 		//echo(true);
