@@ -154,7 +154,7 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 {
 	
 	echo(%collisiondetails);
-	if(%sceneobject.getSceneGroup()==1){
+	if(%sceneobject.getSceneGroup()==1 || %sceneobject.getSceneGroup()==2){
 		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
 		myModule.touchdown=1;
 		if(myModule.gravity==0){
@@ -162,6 +162,14 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 		//	myScene.Gravity="0, -9.8";
 		}else{
 		//	myScene.Gravity= "0, 9.8";
+		}
+	}
+	
+	if(%sceneobject.getSceneGroup()==2){
+		%sceneobject.setHeight(%sceneobject.getHeight()-0.1);
+		echo(%sceneobject.getHeight());
+		if(%sceneobject.getHeight()<0.2){
+			%sceneobject.safeDelete	();	
 		}
 	}
 }

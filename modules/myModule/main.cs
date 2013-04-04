@@ -10,10 +10,12 @@ exec("./scripts/fileIO.cs");
 exec("./scripts/background.cs");
 exec("./scripts/guy.cs");
 exec("./scripts/normal_floor.cs");
+exec("./scripts/clearing_floor.cs");
 
 createSceneWindow();
 createScene();
 myModule.nfloor=0;
+myModule.cfloor=0;
 mySceneWindow.setScene(myScene);
 //myScene.setDebugOn( "collision" );
 myScene.setDebugOn( "fps" );
@@ -23,6 +25,8 @@ createBackground();
   addNormalFloor(15,-5,10,2);
    addNormalFloor(25,0,100,2);
     //addNormalFloor(0,-25,100,2);
+    
+    addClearingFloor(0,10,20,2);
 createGuy();
 
 myModule.playerSpeed=14;

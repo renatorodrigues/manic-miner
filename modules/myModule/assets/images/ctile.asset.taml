@@ -1,0 +1,9 @@
+<ImageAsset
+    AssetName="cTile"
+    ImageFile="ctile.png"
+    FilterMode="Nearest"
+    CellCountX="1"
+    CellCountY="1"
+    CellWidth="32"
+    CellHeight="32"
+    />
