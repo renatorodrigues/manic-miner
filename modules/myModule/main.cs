@@ -23,7 +23,7 @@ myScene.setDebugOn( "fps" );
 createBackground();
 
  addNormalFloor(0,-15,25,2);
-  addNormalFloor(15,-5,10,2);
+  addNormalFloor(15,-5.5,10,2);
    addNormalFloor(25,0,100,2);
     //addNormalFloor(0,-25,100,2);
     
@@ -103,7 +103,7 @@ function playerRight(%val){
 function playerLeft(%val){
 	Guy.onUpdate();
 	if(%val)
-   {
+	{
       
    	   myModule.leftKey=1;
    	   

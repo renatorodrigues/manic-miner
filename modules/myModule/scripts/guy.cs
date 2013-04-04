@@ -38,8 +38,12 @@ function createGuy()
     // This creates a box which so that collisions with the screen edges register properly
     // Calling createPolygonBoxCollisionShape() without arguments sets the box to the size of the 
     // sceneobject automatically.
-    %guy.createPolygonBoxCollisionShape();
+    %guy.createPolygonBoxCollisionShape(4,3,0,-0.5);
 
+  
+    
+   
+    
     //%guy.setCollisionLayers(all);
     %guy.setCollisionCallback( true );
      Guy.stopAnimation();
@@ -48,7 +52,7 @@ function createGuy()
     //Guy.schedule(32, Guy,"onUpdate", Guy);
    
     // Add the sprite to the scene
-    
+    echo(%guy);
     myScene.add( %guy );  
     
     
@@ -64,12 +68,22 @@ function Guy::onUpdate(%this)
 
 function Guy::updateVertical(%this)
 {
-	echo(%this.getContactCount ());
+	//echo(%this.getContactCount ());
 	
-	
+	for(%i=0;%i<%this.getContactCount ();%i++) {
+		if(%this.getContact(%i)$=""){
+		}else{
+		//	myScene.getObject( getWord(%this.getContact(%i),0));
+		//echo("obj    "@%this.getContact(%i));
+		//echo(true);
+		}
+	}
+	//echo(%this.getAABB());	
 	
 if(%this.getContactCount ()-myModule.deleteBlocks<1){
-	 if(myModule.gravity!=0){
+	
+	
+	if(myModule.gravity!=0){
 		      //myScene.Gravity= "0, 9.8";
 		      Guy.setLinearVelocityY(myModule.playerVSpeed);
 		      
@@ -156,8 +170,7 @@ if(%this.getContactCount ()-myModule.deleteBlocks<1){
 
 function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 {
-	
-	echo(%collisiondetails);
+	echo(%sceneobject);
 	if(%sceneobject.getSceneGroup()==1 || %sceneobject.getSceneGroup()==2){
 		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
 		myModule.touchdown=1;
@@ -170,10 +183,14 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 	}
 	
 	if(%sceneobject.getSceneGroup()==2){
-		%sceneobject.setHeight(%sceneobject.getHeight()-0.1);
+		%sceneobject.setHeight(%sceneobject.getHeight()-0.5);
 		echo(%sceneobject.getHeight());
+		//%sceneobject.clearCollisionShapes();
+		//%sceneobject.createPolygonBoxCollisionShape();
 		if(%sceneobject.getHeight()<0.2){
-			%sceneobject.safeDelete();
+			//%sceneobject.safeDelete();
+			
+			%sceneobject.setActive( false );
 			myModule.deleteBlocks++;
 		}
 	}
