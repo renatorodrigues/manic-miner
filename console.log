@@ -1,4 +1,4 @@
-//-------------------------- 3/21/2013 -- 18:15:15 -----
+//-------------------------- 4/4/2013 -- 09:51:37 -----
 Console trace is off.
 using display 0x42732c0
 Activating the OpenGL display device...
@@ -37,13 +37,51 @@ Failed to load profile bitmap ((null))
 modules/myModule/scripts/scene.cs (10): Unknown command setDefaultFriction.
   Object myScene(1116) myScene -> Scene -> BehaviorComponent -> DynamicConsoleMethodComponent -> SimComponent -> SimObject
 modules/myModule/scripts/guy.cs (36): Unknown command getFilterMode.
-  Object Guy(1119) Guy -> Sprite -> SpriteBase -> SceneObject -> BehaviorComponent -> DynamicConsoleMethodComponent -> SimComponent -> SimObject
+  Object Guy(1126) Guy -> Sprite -> SpriteBase -> SceneObject -> BehaviorComponent -> DynamicConsoleMethodComponent -> SimComponent -> SimObject
 @@@@@@@ 
 SimObject::assignName - Assigning name 'ActionMap' to instance of object with type 'ActionMap'. This can cause namespace linking issues.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for ActionMap for SimObject.
 Error: cannot change namespace parent linkage of ActionMap from SimObject to ActionMap.
-2 0 0.0000 -1.0000 2.0000 31.0000 0.0000 0.0000 -2.0000 31.0000 25.0000 0.4660
-3 0 -0.0000 1.0000 -2.0000 20.0025 800.0000 0.0000 2.0000 20.0025 0.0000 0.0000
+2 0 -0.0000 1.0000 -2.0000 1.0025 800.0000 0.0000 2.0000 1.0025 0.0000 0.0000
+0 0 -0.0000 1.0000 -25.0000 1.0075 0.0000 0.0000
+2 0 -0.0000 1.0000 -36.3309 -23.9975 800.0000 160.0000 -32.3309 -23.9975 0.0000 0.0000
+myModule:FatGuyAnim
+toinv
+3 0 0.0000 -1.0000 -21.2396 -1.0025 800.0000 160.0000 -25.0000 -1.0025 0.0000 0.0000
+0 0 0.0000 -1.0000 -25.0000 -1.0025 0.0000 0.0000
+myModule:FatGuyAnim_Inv
+toanim
+2 0 -0.0000 1.0000 -9.2676 -13.9975 800.0000 -160.0000 -5.2676 -13.9975 0.0000 0.0000
+myModule:FatGuyAnim
+toinv
+3 0 0.0000 -1.0000 9.3924 -1.0025 800.0000 160.0000 5.3924 -1.0025 0.0000 0.0000
+0 0 -1.0000 0.0000 9.9975 -5.0150 0.0000 0.0000 9.9975 -4.0000 0.0000 0.0000
+2 0 -1.0000 -0.0000 9.9975 -4.0000 224.0000 0.0000
+myModule:FatGuyAnim_Inv
+toanim
+3 0 -1.0000 -0.0000 9.9925 -6.0000 0.0000 0.0000
+2 0 -0.0000 1.0000 5.9850 -13.9975 800.0000 0.0000 9.9850 -13.9975 0.0000 0.0000
+myModule:FatGuyAnim
+toinv
+0 0 -1.0000 0.0000 9.9925 -5.9850 0.0000 0.0000 9.9925 -6.0000 -5.0000 0.7111
+3 0 -1.0000 -0.0000 9.9925 -6.0000 0.0001 -0.0000
+2 0 -1.0000 -0.0000 9.9925 -4.0000 0.0000 0.0000
+3 0 0.0000 -1.0000 9.9850 -1.0025 800.0000 -0.0001 5.9850 -1.0025 0.0000 0.0000
+myModule:FatGuyAnim_Inv
+toanim
+3 0 -1.0000 -0.0000 9.9925 -6.0000 0.0000 0.0000
+2 0 -0.0000 1.0000 5.9850 -13.9975 800.0000 0.0000 9.9850 -13.9975 0.0000 0.0000
+1 0 -0.0000 1.0000 12.5000 -13.9925 0.0000 0.0000
+myModule:FatGuyAnim
+toinv
+3 0 0.0000 -1.0000 14.4594 -6.0025 800.0000 160.0000 10.4594 -6.0025 0.0000 0.0000
+1 0 0.0000 -1.0000 20.0000 -6.0075 0.0000 0.0000
+myModule:FatGuyAnim_Inv
+toanim
+2 0 -0.0000 1.0000 19.6450 -23.9975 800.0000 0.0000 23.6450 -23.9975 0.0000 0.0000
+myModule:FatGuyAnim
+toinv
+3 0 0.0000 -1.0000 25.5994 -1.0025 800.0000 160.0000 21.5994 -1.0025 0.0000 0.0000
 Namespace::unlinkClass - cannot unlink namespace parent linkage for ActionMap for SimObject.
 Shutting down the OpenGL display device...
 Killing the texture manager...

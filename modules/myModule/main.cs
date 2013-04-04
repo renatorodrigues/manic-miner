@@ -9,14 +9,20 @@ exec("./scripts/fileIO.cs");
 
 exec("./scripts/background.cs");
 exec("./scripts/guy.cs");
+exec("./scripts/normal_floor.cs");
 
 createSceneWindow();
 createScene();
-
+myModule.nfloor=0;
 mySceneWindow.setScene(myScene);
-myScene.setDebugOn( "collision" );
+//myScene.setDebugOn( "collision" );
 myScene.setDebugOn( "fps" );
 createBackground();
+
+ addNormalFloor(0,-15,25,2);
+  addNormalFloor(15,-5,10,2);
+   addNormalFloor(25,0,100,2);
+    //addNormalFloor(0,-25,100,2);
 createGuy();
 
 myModule.playerSpeed=14;
