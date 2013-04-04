@@ -150,7 +150,7 @@ function playerLeft(%val){
 
 function toggleG(%val)
 {
-	Guy.onUpdate();
+	//Guy.onUpdate();
    if(%val)
    {
       //echo("g key down");

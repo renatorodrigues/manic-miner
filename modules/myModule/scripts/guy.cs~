@@ -69,19 +69,49 @@ function Guy::onUpdate(%this)
 function Guy::updateVertical(%this)
 {
 	//echo(%this.getContactCount ());
+	myModule.tick++;
+	//echo(myModule.tick);
+	//echo(%this.getRenderPosition());
 	
-	for(%i=0;%i<%this.getContactCount ();%i++) {
-		if(%this.getContact(%i)$=""){
-		}else{
-		//	myScene.getObject( getWord(%this.getContact(%i),0));
-		//echo("obj    "@%this.getContact(%i));
-		//echo(true);
-		}
+
+	
+	if(myModule.gravity==0){
+		%ny=getWord(%this.getRenderPosition(),1)-2.1;
+	}else{
+		%ny=getWord(%this.getRenderPosition(),1)+2.1;
 	}
-	//echo(%this.getAABB());	
+	%down=0;
+	%obj[0]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0) SPC %ny);
+	%obj[1]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0)-2 SPC %ny);
+	%obj[2]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0)+2 SPC %ny);
+	//echo(getWord(%this.getRenderPosition(),0)+2 SPC %ny);
 	
-if(%this.getContactCount ()-myModule.deleteBlocks<1){
-	
+				myModule.tick=0;
+		for(%i=0;%i<3;%i++){
+			%sceneobject=getWord(%obj[%i],0);
+			if(%sceneobject$=""){
+		
+			}else{
+			%down++;
+				//echo(%i);
+			if(myModule.tick>15){	
+				if(%sceneobject.getSceneGroup()==2){
+					%sceneobject.setHeight(%sceneobject.getHeight()-0.5);
+					//echo(%sceneobject.getHeight());
+					//%sceneobject.clearCollisionShapes();
+					//%sceneobject.createPolygonBoxCollisionShape();
+					if(%sceneobject.getHeight()<0.2){
+						//%sceneobject.safeDelete();
+						%sceneobject.setHeight(0);
+						%sceneobject.setActive( false );
+						myModule.deleteBlocks++;
+				}
+			}
+			}
+			}
+		}
+		if(%down==0){
+	//echo("air");
 	
 	if(myModule.gravity!=0){
 		      //myScene.Gravity= "0, 9.8";
@@ -97,7 +127,14 @@ if(%this.getContactCount ()-myModule.deleteBlocks<1){
 		       myModule.touchdown=0;
 		       
 	      }
+}else{
+	echo("touch");
+	myModule.touchdown=1;
+	 Guy.setLinearVelocityY(0);
 }
+		
+	
+
    /*%yVelocity = %this.getLinearVelocityY();
    
    %this.setLinearVelocityY(5);
@@ -170,19 +207,19 @@ if(%this.getContactCount ()-myModule.deleteBlocks<1){
 
 function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 {
-	echo(%sceneobject);
-	if(%sceneobject.getSceneGroup()==1 || %sceneobject.getSceneGroup()==2){
+	
+	if(%sceneobject.getSceneGroup()==1){
+		echo("1");
 		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
 		myModule.touchdown=1;
-		if(myModule.gravity==0){
 		
-		//	myScene.Gravity="0, -9.8";
-		}else{
-		//	myScene.Gravity= "0, 9.8";
-		}
+		
 	}
 	
 	if(%sceneobject.getSceneGroup()==2){
+		echo("2");
+		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
+		myModule.touchdown=1;
 		%sceneobject.setHeight(%sceneobject.getHeight()-0.5);
 		echo(%sceneobject.getHeight());
 		//%sceneobject.clearCollisionShapes();
