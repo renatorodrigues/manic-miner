@@ -24,7 +24,7 @@ function createGuy(%x,%y)
     //%image.setImageFile("myModule:fatguy");
     
     %guy.groundSpeed=0;
-    
+    %guy.catchedItems=0;
     
     // Set the scroller to use an animation!
     %guy.Animation = "myModule:FatGuyAnim";
@@ -195,10 +195,25 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 		}
 	}
 	
+	if(%sceneobject.getSceneGroup()==$ITEM){
+		
+		if(%sceneobject.catched){
+		}else{
+			%sceneobject.catched=true;
+			%sceneobject.setActive( false );
+			%this.catchedItems++;
+			
+		}
+		itemCount.setText(%this.catchedItems);
+		
+	}
+	
 	if(%sceneobject.getSceneGroup()==$END_PLACE){
-		echo("END");
-		%this.Position=%this.SpawnPos;
-		myModule.gravity=0;
+		if(%this.catchedItems==myModule.itemCount){
+			echo("END");
+			%this.Position=%this.SpawnPos;
+			myModule.gravity=0;
+		}
 	}
 	
 	

@@ -13,8 +13,8 @@ if(!isObject(GuiDefaultProfile)) new GuiControlProfile (GuiDefaultProfile){
     
      // used by guiTextControl
     modal = true;
-    justify = "left";
-    autoSizeWidth = false;
+    justify = "right";
+    autoSizeWidth = true;
     autoSizeHeight = false;
     returnTab = false;
     numbersOnly = false;

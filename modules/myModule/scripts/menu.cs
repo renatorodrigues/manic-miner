@@ -84,6 +84,33 @@ function createMenu(){
       bitmap="artwork/fatguy-life.png";
    };
    
+     new GuiTextCtrl(itemLable) {
+      
+      HorizSizing = "relative";
+      VertSizing = "relative";
+      position = "220 700";
+      Extent = "190 40";
+      text = "Items:   /   ";
+      Visible = "1";
+   };
+   new GuiTextCtrl(itemCount) {
+      
+      HorizSizing = "right";
+      VertSizing = "top";
+      position = "330 700";
+      Extent = "0 40";
+      text = "0";
+      Visible = "1";
+   };
+   new GuiTextCtrl(itemTotal) {
+      
+      HorizSizing = "left";
+      VertSizing = "relative";
+      position = "400 700";
+      Extent = "0 40";
+      text = "0";
+      Visible = "1";
+   };
    
    menuGui.addGuiControl(scoreCounterTitle);
    menuGui.addGuiControl(scoreValue);
@@ -92,6 +119,9 @@ function createMenu(){
    menuGui.addGuiControl(life1);
    menuGui.addGuiControl(life2);
    menuGui.addGuiControl(life3);
+   menuGui.addGuiControl(itemLable);
+   menuGui.addGuiControl(itemCount);
+   menuGui.addGuiControl(itemTotal);
    Canvas.pushDialog(menuGui);
    
 }
