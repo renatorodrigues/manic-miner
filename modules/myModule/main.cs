@@ -9,11 +9,13 @@ exec("./scripts/fileIO.cs");
 
 exec("./scripts/background.cs");
 exec("./scripts/guy.cs");
+exec("./scripts/badguy.cs");
 exec("./scripts/normal_floor.cs");
 exec("./scripts/clearing_floor.cs");
 
 createSceneWindow();
 createScene();
+myModule.badguy=0;
 myModule.nfloor=0;
 myModule.cfloor=0;
 myModule.deleteBlocks=0;
@@ -27,8 +29,9 @@ addNormalFloor(15,-5.5,10,2);
 addNormalFloor(25,0,100,2);
 addClearingFloor(0,10,20,2);
 createGuy();
+spawnBadGuy(-10,-5);
 
-
+spawnBadGuy(-15,-5);
 myModule.playerSpeed=14;
 myModule.playerVSpeed=50;
 Guy.setLinearVelocityY(-myModule.playerVSpeed);

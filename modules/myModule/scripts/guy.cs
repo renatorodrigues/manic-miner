@@ -33,7 +33,7 @@ function createGuy()
     
   //  %guy.setImageFrame(0);
     
-    echo("@@@@@@@ ",%guy.getFilterMode());
+    //echo("@@@@@@@ ",%guy.getFilterMode());
 
     // This creates a box which so that collisions with the screen edges register properly
     // Calling createPolygonBoxCollisionShape() without arguments sets the box to the size of the 

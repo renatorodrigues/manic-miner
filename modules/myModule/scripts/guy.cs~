@@ -48,7 +48,7 @@ function createGuy()
     %guy.setCollisionCallback( true );
      Guy.stopAnimation();
      %guy.setUpdateCallback(true);
-     %guy.setGatherContacts (true);
+     //%guy.setGatherContacts (true);
     //Guy.schedule(32, Guy,"onUpdate", Guy);
    
     // Add the sprite to the scene
@@ -68,10 +68,8 @@ function Guy::onUpdate(%this)
 
 function Guy::updateVertical(%this)
 {
-	//echo(%this.getContactCount ());
+	
 	myModule.tick++;
-	//echo(myModule.tick);
-	//echo(%this.getRenderPosition());
 	
 
 	
@@ -84,17 +82,18 @@ function Guy::updateVertical(%this)
 	%obj[0]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0) SPC %ny);
 	%obj[1]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0)-2 SPC %ny);
 	%obj[2]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0)+2 SPC %ny);
-	//echo(getWord(%this.getRenderPosition(),0)+2 SPC %ny);
 	
-				myModule.tick=0;
+	
+				
 		for(%i=0;%i<3;%i++){
 			%sceneobject=getWord(%obj[%i],0);
 			if(%sceneobject$=""){
 		
 			}else{
 			%down++;
-				//echo(%i);
+				
 			if(myModule.tick>15){	
+				
 				if(%sceneobject.getSceneGroup()==2){
 					%sceneobject.setHeight(%sceneobject.getHeight()-0.5);
 					//echo(%sceneobject.getHeight());
@@ -104,102 +103,41 @@ function Guy::updateVertical(%this)
 						//%sceneobject.safeDelete();
 						%sceneobject.setHeight(0);
 						%sceneobject.setActive( false );
-						myModule.deleteBlocks++;
+						//myModule.deleteBlocks++;
 				}
 			}
 			}
 			}
 		}
-		if(%down==0){
+		
+		if(myModule.tick>15){	
+	myModule.tick=0;	
+	}
+	if(%down==0){
 	//echo("air");
 	
 	if(myModule.gravity!=0){
 		      //myScene.Gravity= "0, 9.8";
 		      Guy.setLinearVelocityY(myModule.playerVSpeed);
-		      
+		      %this.setLinearVelocityX(myModule.actualPlayerSpeed);
 		      myModule.touchdown=0;
 		      
 		      
 	      }else{
 		       //myScene.Gravity="0, -9.8";
 		       Guy.setLinearVelocityY(-myModule.playerVSpeed);
-		    
+		    %this.setLinearVelocityX(myModule.actualPlayerSpeed);
 		       myModule.touchdown=0;
 		       
 	      }
 }else{
-	echo("touch");
+	//echo("touch");
+	%this.setLinearVelocityX(myModule.actualPlayerSpeed);
 	myModule.touchdown=1;
-	 Guy.setLinearVelocityY(0);
+	 
 }
 		
-	
 
-   /*%yVelocity = %this.getLinearVelocityY();
-   
-   %this.setLinearVelocityY(5);
-   
-   
-   %normalX = getWord(%collision, 4);
-   %normalY = getWord(%collision, 5);
-   
-   // no collision
-   if (%collision $= "")
-   {
-   	   
-   	   echo("no");
-      %this.airborne = true;
-      %this.setConstantForceY(100);
-      %this.setLinearVelocityY(%yVelocity);
-      return;
-   }
-   
-   // collides with wall to the left
-   if (%normalX == 1 && %normalY == 0)
-   {
-      %this.againstLeftWall = true;
-      %this.setLinearVelocityX(0);
-      %this.setLinearVelocityY(%yVelocity);
-      
-      return;
-   }
-   
-   // collides with wall to the right
-   if (%normalX == -1 && %normalY == 0)
-   {
-      %this.againstRightWall = true;
-      %this.setLinearVelocityX(0);
-      %this.setLinearVelocityY(%yVelocity);
-      return;
-   }
-   
-   // on ground with no wall collisions
-   if (%normalX == 0 && %normalY == -1)
-   {
-      %this.airborne = false;
-      %this.againstLeftWall = false;
-      %this.againstRightWall = false;
-      %this.setConstantForceY(0);
-      %this.setLinearVelocityY(%yVelocity);
-      return;
-   }
-   
-   // in air and hits platform with head
-   if (%normalY == 1)
-   {
-      %this.airborne = true;
-      %this.setLinearVelocityX(0);
-      %this.setConstantForceY(100);
-      %this.setLinearVelocityY(%yVelocity);
-      return;
-   }
-   
-   // in case another type of collision normal was detected
-   error("another collison type" SPC %normalX SPC %normalY);
-   %this.airborne = false;
-   %this.againstLeftWall = false;
-   %this.againstRightWall = false;
-   %this.setLinearVelocityY(%yVelocity);*/
 }
 
 

@@ -19,15 +19,13 @@ myModule.cfloor=0;
 myModule.deleteBlocks=0;
 mySceneWindow.setScene(myScene);
 myScene.setDebugOn( "collision" );
-myScene.setDebugOn( "fps" );
+//myScene.setDebugOn( "fps" );
 createBackground();
 
- addNormalFloor(0,-15,25,2);
-  addNormalFloor(15,-5.5,10,2);
-   addNormalFloor(25,0,100,2);
-    //addNormalFloor(0,-25,100,2);
-    
-    addClearingFloor(0,10,20,2);
+addNormalFloor(0,-15,25,2);
+addNormalFloor(15,-5.5,10,2);
+addNormalFloor(25,0,100,2);
+addClearingFloor(0,10,20,2);
 createGuy();
 
 
@@ -39,13 +37,12 @@ myModule.actualPlayerSpeed=0;
 myModule.leftKey=0;
 myModule.rightKey=0;
 myModule.touchdown=0;
-
+myModule.tick=0;
 filewrite();
 
 new ActionMap(actionMap);
 actionMap.push();
 
-   // activateDirectInput();
 actionMap.bind(keyboard, "g", toggleG); 
 actionMap.bind(keyboard, space, toggleG); 
 actionMap.bind(keyboard, up, toggleG); 
@@ -150,7 +147,7 @@ function playerLeft(%val){
 
 function toggleG(%val)
 {
-	Guy.onUpdate();
+	//Guy.onUpdate();
    if(%val)
    {
       //echo("g key down");
@@ -176,14 +173,14 @@ function toggleG(%val)
 		       
 	      }
 	      echo(Guy.getAnimation());
-	      if(Guy.getAnimation()$="myModule:FatGuyAnim_Inv"){
-	      	      echo("toanim");
+	      		if(Guy.getAnimation()$="myModule:FatGuyAnim_Inv"){
+	      	      	echo("toanim");
 		      	      Guy.playAnimation("myModule:FatGuyAnim");
 		      }else{
 		      	      echo("toinv");
 		      	      Guy.playAnimation("myModule:FatGuyAnim_Inv");
 		      }
-		       if(myModule.actualPlayerSpeed<=0){
+		       if(myModule.actualPlayerSpeed<0.1 && myModule.actualPlayerSpeed>-0.1){
 		        Guy.stopAnimation();
 		       	       
 		       }
