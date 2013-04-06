@@ -171,6 +171,8 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 	
 	if(%sceneobject.getSceneGroup()==$CLEAR_TILE){
 		//echo("2");
+		
+		echo(%sceneobject.a);
 		%this.setLinearVelocityX(myModule.actualPlayerSpeed-%this.groundSpeed);
 		myModule.touchdown=1;
 		%sceneobject.setHeight(%sceneobject.getHeight()-0.5);

@@ -5,6 +5,7 @@ function addClearingFloor(%x,%y,%w,%h){
 	for(%i=0;%cw*%i<%w;%i++){
 		
 	myModule.cfloor[myModule.cfloor]=new Sprite();
+	myModule.cfloor[myModule.cfloor].a="ack";
 	myModule.cfloor[myModule.cfloor].setBodyType( static );
 
 	

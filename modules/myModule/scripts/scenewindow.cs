@@ -10,9 +10,7 @@ function createSceneWindow()
        // GuiDefaultProfile by default
 
         mySceneWindow.Profile = GuiDefaultProfile;
-        $life_text=new GuiTextCtrl();
-        $life_text.setText("LIFES");
-        $life_text.Postion="0 -30";
+       
         // Place the sceneWindow on the Canvas
         Canvas.setContent( mySceneWindow );                     
     }
@@ -24,6 +22,7 @@ function createSceneWindow()
     mySceneWindow.setCameraSize( 100, 75 );
     mySceneWindow.setCameraZoom( 1 );
     mySceneWindow.setCameraAngle( 0 );
+    
 }
 
 
