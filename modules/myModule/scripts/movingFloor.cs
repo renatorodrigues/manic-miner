@@ -12,7 +12,7 @@ function addMovingFloor(%x,%y,%w,%h,%speed,%direction){
     %floor.Size = %w SPC %h;
    %floor.Friction=0;
   %floor.SceneLayer = 5;
-  %floor.SceneGroup = 4 ;
+  %floor.SceneGroup = $MOVING_TILE ;
    
    %floor.Image = "myModule:Tile"; //changepicture
     %floor.UseBackgroundColor = true;

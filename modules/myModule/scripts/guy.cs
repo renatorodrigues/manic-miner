@@ -154,14 +154,14 @@ function Guy::updateVertical(%this)
 function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 {
 	
-	if(%sceneobject.getSceneGroup()!=4){
+	if(%sceneobject.getSceneGroup()!=$MOVING_TILE){
 		%this.groundSpeed=0;
 		
 	}else{
 		%this.groundSpeed=%sceneobject.Speed;
 	}
 	
-	if(%sceneobject.getSceneGroup()==1 || %sceneobject.getSceneGroup()==4){
+	if(%sceneobject.getSceneGroup()==$NORMAL_TILE || %sceneobject.getSceneGroup()==$MOVING_TILE){
 		//echo("1");
 		%this.setLinearVelocityX(myModule.actualPlayerSpeed-%this.groundSpeed);
 		myModule.touchdown=1;
@@ -169,7 +169,7 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 		
 	}
 	
-	if(%sceneobject.getSceneGroup()==2){
+	if(%sceneobject.getSceneGroup()==$CLEAR_TILE){
 		//echo("2");
 		%this.setLinearVelocityX(myModule.actualPlayerSpeed-%this.groundSpeed);
 		myModule.touchdown=1;
@@ -184,13 +184,16 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 			myModule.deleteBlocks++;
 		}
 	}
-	if(%sceneobject.getSceneGroup()==10){
+	if(%sceneobject.getSceneGroup()==$ENEMY){
 		echo("dead");
 		%this.Position=%this.SpawnPos;
-		myModule.gravity=0;
+		if(myModule.gravity!=0){
+			myModule.touchdown=1;
+			toggleG(true);
+		}
 	}
 	
-	if(%sceneobject.getSceneGroup()==3){
+	if(%sceneobject.getSceneGroup()==$END_PLACE){
 		echo("END");
 		%this.Position=%this.SpawnPos;
 		myModule.gravity=0;

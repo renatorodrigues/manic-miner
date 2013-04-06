@@ -1,7 +1,17 @@
 //walls collision group = 1
 
+
+
+
+
 function myModule::create( %this )
 {
+	
+	$NORMAL_TILE=1;
+	$CLEAR_TILE=2;
+	$END_PLACE=3;
+	$MOVING_TILE=4;
+	$ENEMY=10;
 exec("./scripts/scenewindow.cs");
 exec("./scripts/scene.cs");
 exec("./gui/guiProfiles.cs");

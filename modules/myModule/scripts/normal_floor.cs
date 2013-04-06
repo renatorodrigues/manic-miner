@@ -12,7 +12,7 @@ function addNormalFloor(%x,%y,%w,%h){
     myModule.floor[myModule.nfloor].Size = %w SPC %h;
    myModule.floor[myModule.nfloor].Friction=0;
   myModule.floor[myModule.nfloor].SceneLayer = 5;
-  myModule.floor[myModule.nfloor].SceneGroup = 1 ;
+  myModule.floor[myModule.nfloor].SceneGroup = $NORMAL_TILE ;
    
    myModule.floor[myModule.nfloor].Image = "myModule:Tile";
     myModule.floor[myModule.nfloor].UseBackgroundColor = true;

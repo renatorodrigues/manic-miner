@@ -12,7 +12,7 @@ function addStalagmite(%x,%y){
     %stal.Size = "2 2";
    %stal.Friction=0;
   %stal.SceneLayer = 5;
-  %stal.SceneGroup = 10 ;
+  %stal.SceneGroup = $ENEMY ;
    
    //%stal.Image = "myModule:Tile"; //missing image
     %stal.UseBackgroundColor = true;

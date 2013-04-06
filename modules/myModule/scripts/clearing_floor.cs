@@ -14,7 +14,7 @@ function addClearingFloor(%x,%y,%w,%h){
     myModule.cfloor[myModule.cfloor].Size = %cw SPC %h;
    myModule.cfloor[myModule.cfloor].Friction=0;
   myModule.cfloor[myModule.cfloor].SceneLayer = 5;
-  myModule.cfloor[myModule.cfloor].SceneGroup = 2 ;
+  myModule.cfloor[myModule.cfloor].SceneGroup = $CLEAR_TILE ;
    
    myModule.cfloor[myModule.cfloor].Image = "myModule:cTile";
     myModule.cfloor[myModule.cfloor].UseBackgroundColor = true;
