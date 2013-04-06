@@ -192,7 +192,7 @@ function BadGuy::onCollision(%this, %sceneobject, %collisiondetails)
 	}
 	
 	if(%sceneobject.getSceneGroup()==2){
-		echo("2");
+		//echo("2");
 		%this.setLinearVelocityX(%this.actualSpeed);
 		%this.touchdown=1;
 		%sceneobject.setHeight(%sceneobject.getHeight()-0.5);

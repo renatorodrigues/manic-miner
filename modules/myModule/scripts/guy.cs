@@ -147,7 +147,7 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 {
 	
 	if(%sceneobject.getSceneGroup()==1){
-		echo("1");
+		//echo("1");
 		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
 		myModule.touchdown=1;
 		
@@ -155,7 +155,7 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 	}
 	
 	if(%sceneobject.getSceneGroup()==2){
-		echo("2");
+		//echo("2");
 		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
 		myModule.touchdown=1;
 		%sceneobject.setHeight(%sceneobject.getHeight()-0.5);
