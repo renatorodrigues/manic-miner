@@ -131,7 +131,7 @@ function Guy::updateVertical(%this)
 		       
 	      }
 }else{
-	echo("touch");
+	//echo("touch");
 	%this.setLinearVelocityX(myModule.actualPlayerSpeed);
 	myModule.touchdown=1;
 	 

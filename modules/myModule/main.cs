@@ -19,15 +19,13 @@ myModule.cfloor=0;
 myModule.deleteBlocks=0;
 mySceneWindow.setScene(myScene);
 myScene.setDebugOn( "collision" );
-myScene.setDebugOn( "fps" );
+//myScene.setDebugOn( "fps" );
 createBackground();
 
- addNormalFloor(0,-15,25,2);
-  addNormalFloor(15,-5.5,10,2);
-   addNormalFloor(25,0,100,2);
-    //addNormalFloor(0,-25,100,2);
-    
-    addClearingFloor(0,10,20,2);
+addNormalFloor(0,-15,25,2);
+addNormalFloor(15,-5.5,10,2);
+addNormalFloor(25,0,100,2);
+addClearingFloor(0,10,20,2);
 createGuy();
 
 
@@ -45,7 +43,6 @@ filewrite();
 new ActionMap(actionMap);
 actionMap.push();
 
-   // activateDirectInput();
 actionMap.bind(keyboard, "g", toggleG); 
 actionMap.bind(keyboard, space, toggleG); 
 actionMap.bind(keyboard, up, toggleG); 
