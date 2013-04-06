@@ -68,7 +68,7 @@ function Guy::onUpdate(%this)
 }
 
 function Guy::updateHorizontal(%this){
-	if(%this.groundSpeed!=0 && myModule.touchdown==1){
+	if(%this.groundSpeed!=0){
 		%this.setLinearVelocityX(myModule.actualPlayerSpeed-%this.groundSpeed);
 		
 	}
