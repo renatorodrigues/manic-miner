@@ -11,6 +11,7 @@ function spawnBadGuy(%x,%y)
     %guy.N=myModule.badguy;
      %guy.touchdown=0;
       %guy.tick=0;
+      %guy.notfall=1;
     myModule.badguy++;
     // Set the position.
     %guy.Position = %x SPC %y;
@@ -26,8 +27,8 @@ function spawnBadGuy(%x,%y)
     //%image.setFilterMode("Nearest");
     //%image.setImageFile("myModule:fatguy");
     %guy.gravity=0;
-    %guy.actualSpeed=0;
-    
+    %guy.actualSpeed=3;
+    %guy.setLinearVelocityX(%guy.actualSpeed);
     
     // Set the scroller to use an animation!
     %guy.Animation = "myModule:BadGuyAnim";
@@ -124,16 +125,26 @@ function BadGuy::updateVertical(%this)
 
 	if(%this.gravity!=0){
 		      //myScene.Gravity= "0, 9.8";
-		      %this.setLinearVelocityY(myModule.playerVSpeed);
-		      %this.setLinearVelocityX(%this.actualSpeed);
-		      %this.touchdown=0;
+		      if(%this.notfall==1){
+		      	      %this.setLinearVelocityX(-%this.getLinearVelocityX());
+		      	      %this.actualSpeed=%this.getLinearVelocityX();
+		      }else{
+			      %this.setLinearVelocityY(myModule.playerVSpeed);
+			      %this.setLinearVelocityX(%this.actualSpeed);
+			      %this.touchdown=0;
+		      }
 		      
 		      
 	      }else{
+	      	       if(%this.notfall==1){
+		      	      %this.setLinearVelocityX(-%this.getLinearVelocityX());
+		      	      %this.actualSpeed=%this.getLinearVelocityX();
+		      }else{
 		       //myScene.Gravity="0, -9.8";
-		       %this.setLinearVelocityY(-myModule.playerVSpeed);
-		    %this.setLinearVelocityX(%this.actualSpeed);
-		       %this.touchdown=0;
+		       	%this.setLinearVelocityY(-myModule.playerVSpeed);
+		       	%this.setLinearVelocityX(%this.actualSpeed);
+		       	%this.touchdown=0;
+		      }
 		       
 	      }
 }else{
