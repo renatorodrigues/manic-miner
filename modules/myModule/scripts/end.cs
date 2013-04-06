@@ -5,8 +5,8 @@ function addEnd(%x,%y){
 
 
     %end.Position = %x SPC %y;
-    %w=4;
-    %h=4;
+    %w=6;
+    %h=6;
     
     %end.Size = %w SPC %h;
    %end.Friction=0;
