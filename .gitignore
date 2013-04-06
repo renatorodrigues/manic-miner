@@ -1,3 +1,6 @@
 # Compiled source #
 ###################
 *.dso
+
+#log
+*.log
