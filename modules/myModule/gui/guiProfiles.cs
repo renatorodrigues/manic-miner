@@ -3,8 +3,8 @@ $platformFontSize = ($platform $= "ios") ? 18 : 12;
 
 if(!isObject(GuiDefaultProfile)) new GuiControlProfile (GuiDefaultProfile){
 	 // font
-    fontType = $platformFontType;
-    fontSize =40;
+    fontType = "ZX-Spectrum";
+    fontSize =32;
     
     fillColor="0 0 0";
     fillColorHL="0 0 0";
@@ -25,3 +25,4 @@ if(!isObject(GuiDefaultProfile)) new GuiControlProfile (GuiDefaultProfile){
     
     
 };  
+

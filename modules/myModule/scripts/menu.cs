@@ -27,7 +27,7 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "878 660";
+      position = "920 660";
       Extent = "110 40";
       text = "0";
       Visible = "1";
@@ -56,7 +56,7 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "220 660";
+      position = "270 660";
       Extent = "110 40";
       text = "0";
       Visible = "1";
@@ -106,7 +106,7 @@ function createMenu(){
       
       HorizSizing = "right";
       VertSizing = "top";
-      position = "330 700";
+      position = "360 700";
       Extent = "0 40";
       text = "0";
       Visible = "1";
@@ -115,7 +115,7 @@ function createMenu(){
       
       HorizSizing = "left";
       VertSizing = "relative";
-      position = "400 700";
+      position = "460 700";
       Extent = "0 40";
       text = "0";
       Visible = "1";

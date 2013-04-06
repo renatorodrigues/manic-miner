@@ -3,7 +3,6 @@
 
 
 
-
 function myModule::create( %this )
 {
 	
@@ -28,7 +27,7 @@ exec("./scripts/stalagmites.cs");
 exec("./scripts/end.cs");
 exec("./scripts/menu.cs");
 exec("./scripts/catchable.cs");
-
+//populateFonts();
 createSceneWindow();
 createScene();
 createMenu();
