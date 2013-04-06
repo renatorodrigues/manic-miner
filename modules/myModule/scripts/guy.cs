@@ -220,7 +220,8 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 			%this.catchedItems++;
 			
 		}
-		itemCount.setText(%this.catchedItems);
+		itemCount.setText(Guy.catchedItems@" / "@myModule.itemCount);
+
 		
 	}
 	

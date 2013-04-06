@@ -99,7 +99,7 @@ function createMenu(){
       VertSizing = "relative";
       position = "220 700";
       Extent = "190 40";
-      text = "Items:   /   ";
+      text = "Items:  ";
       Visible = "1";
    };
    new GuiTextCtrl(itemCount) {
@@ -111,15 +111,7 @@ function createMenu(){
       text = "0";
       Visible = "1";
    };
-   new GuiTextCtrl(itemTotal) {
-      
-      HorizSizing = "left";
-      VertSizing = "relative";
-      position = "460 700";
-      Extent = "0 40";
-      text = "0";
-      Visible = "1";
-   };
+
    menuGui.addGuiControl(backmenu);
    menuGui.addGuiControl(scoreCounterTitle);
    menuGui.addGuiControl(scoreValue);
@@ -130,7 +122,7 @@ function createMenu(){
    menuGui.addGuiControl(life3);
    menuGui.addGuiControl(itemLable);
    menuGui.addGuiControl(itemCount);
-   menuGui.addGuiControl(itemTotal);
+  
    Canvas.pushDialog(menuGui);
    
 }

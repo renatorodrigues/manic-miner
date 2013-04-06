@@ -21,7 +21,12 @@ function addCatchable(%x,%y){
     %end.createEdgeCollisionShape( -%w/2, -%h/2, %w/2, -%h/2 );   
     myScene.add( %end);  
     myModule.itemCount++;
-    itemTotal.setText(myModule.itemCount);
+    if(!isObject(Guy)){
+     itemCount.setText("0 / "@myModule.itemCount);
+    }
+    	    else{
+    itemCount.setText(Guy.catchedItems@" / "@myModule.itemCount);
+    }
 
     
 
