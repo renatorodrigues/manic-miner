@@ -170,10 +170,7 @@ function BadGuy::updateVertical(%this)
 function BadGuy::onCollision(%this, %sceneobject, %collisiondetails)
 {
 	
-	if(%sceneobject.getSceneGroup()==1){
-		//echo("1  ---- "@%this.actualSpeed@" -- "@%this.N);
-		%this.setLinearVelocityX(%this.actualSpeed);
-		if(%this.touchdown==1 && %this.dirChange==0){
+	if(%this.touchdown==1 && %this.dirChange==0){
 			 %this.actualSpeed=-%this.actualSpeed;
 		      	      %this.setLinearVelocityX(%this.actualSpeed);
 		      	     
@@ -184,6 +181,11 @@ function BadGuy::onCollision(%this, %sceneobject, %collisiondetails)
    	   	 	       	       %this.playAnimation("myModule:BadGuyAnim_Inv");
    	   	 	       }
 		}
+	
+	if(%sceneobject.getSceneGroup()==1){
+		//echo("1  ---- "@%this.actualSpeed@" -- "@%this.N);
+		%this.setLinearVelocityX(%this.actualSpeed);
+		
 		%this.touchdown=1;
 		
 		

@@ -174,6 +174,12 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 		%this.Position=%this.SpawnPos;
 		myModule.gravity=0;
 	}
+	
+	if(%sceneobject.getSceneGroup()==3){
+		echo("END");
+		%this.Position=%this.SpawnPos;
+		myModule.gravity=0;
+	}
 }
 
 
