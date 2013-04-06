@@ -7,6 +7,7 @@ function createScene()
     // Create the scene.
     new Scene(myScene);
     //myScene.Gravity="0, -9.8";
+    myScene.setDefaultFriction("0.0");
    
     
 }

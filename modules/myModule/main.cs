@@ -19,6 +19,14 @@ myModule.badguy=0;
 myModule.nfloor=0;
 myModule.cfloor=0;
 myModule.deleteBlocks=0;
+myModule.playerSpeed=14;
+myModule.playerVSpeed=50;
+myModule.gravity=0;
+myModule.actualPlayerSpeed=0;
+myModule.leftKey=0;
+myModule.rightKey=0;
+myModule.touchdown=0;
+myModule.tick=0;
 mySceneWindow.setScene(myScene);
 myScene.setDebugOn( "collision" );
 //myScene.setDebugOn( "fps" );
@@ -32,26 +40,20 @@ createGuy();
 spawnBadGuy(-10,-5);
 
 spawnBadGuy(-15,-5);
-myModule.playerSpeed=14;
-myModule.playerVSpeed=50;
+
 Guy.setLinearVelocityY(-myModule.playerVSpeed);
-myModule.gravity=0;
-myModule.actualPlayerSpeed=0;
-myModule.leftKey=0;
-myModule.rightKey=0;
-myModule.touchdown=0;
-myModule.tick=0;
+
 filewrite();
 
-new ActionMap(actionMap);
-actionMap.push();
+new ActionMap(control);
+control.push();
 
-actionMap.bind(keyboard, "g", toggleG); 
-actionMap.bind(keyboard, space, toggleG); 
-actionMap.bind(keyboard, up, toggleG); 
-actionMap.bind(keyboard, down, toggleG); 
-actionMap.bind(keyboard, right, playerRight); 
-actionMap.bind(keyboard, left, playerLeft); 
+control.bind(keyboard, "g", toggleG); 
+control.bind(keyboard, space, toggleG); 
+control.bind(keyboard, up, toggleG); 
+control.bind(keyboard, down, toggleG); 
+control.bind(keyboard, right, playerRight); 
+control.bind(keyboard, left, playerLeft); 
 }
 
 function playerRight(%val){

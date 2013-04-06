@@ -9,6 +9,8 @@ function spawnBadGuy(%x,%y)
     // so we set its BodyType to dynamic
     %guy.setBodyType( dynamic );
     %guy.N=myModule.badguy;
+     %guy.touchdown=0;
+      %guy.tick=0;
     myModule.badguy++;
     // Set the position.
     %guy.Position = %x SPC %y;
@@ -23,8 +25,8 @@ function spawnBadGuy(%x,%y)
     //%image=new ImageAsset();
     //%image.setFilterMode("Nearest");
     //%image.setImageFile("myModule:fatguy");
-    
-    
+    %guy.gravity=0;
+    %guy.actualSpeed=0;
     
     
     // Set the scroller to use an animation!
@@ -53,8 +55,10 @@ function spawnBadGuy(%x,%y)
     //Guy.schedule(32, Guy,"onUpdate", Guy);
    
     // Add the sprite to the scene
+    %guy.setLinearVelocityY(-myModule.playerVSpeed);
     echo(%guy);
     myScene.add( %guy );  
+    
     
     
 }
@@ -63,19 +67,19 @@ function  BadGuy::onUpdate(%this)
 {	//echo("update");
 	//echo(%this.getContactCount ());
   // %this.updateHorizontal();
-   //%this.updateVertical();
+   %this.updateVertical();
    //%this.setCurrentAnimation();
-   echo("BadGuy "@%this.N);
+  // echo("BadGuy "@%this.N);
 }
 
 function BadGuy::updateVertical(%this)
 {
 	
-	myModule.tick++;
+	%this.tick++;
 	
 
 	
-	if(myModule.gravity==0){
+	if(%this.gravity==0){
 		%ny=getWord(%this.getRenderPosition(),1)-2.1;
 	}else{
 		%ny=getWord(%this.getRenderPosition(),1)+2.1;
@@ -94,7 +98,7 @@ function BadGuy::updateVertical(%this)
 			}else{
 			%down++;
 				
-			if(myModule.tick>15){	
+			if(%this.tick>15){	
 				
 				if(%sceneobject.getSceneGroup()==2){
 					%sceneobject.setHeight(%sceneobject.getHeight()-0.5);
@@ -112,30 +116,30 @@ function BadGuy::updateVertical(%this)
 			}
 		}
 		
-		if(myModule.tick>15){	
-	myModule.tick=0;	
+		if(%this.tick>15){	
+	%this.tick=0;	
 	}
 	if(%down==0){
 	//echo("air");
-	
-	if(myModule.gravity!=0){
+
+	if(%this.gravity!=0){
 		      //myScene.Gravity= "0, 9.8";
-		      Guy.setLinearVelocityY(myModule.playerVSpeed);
-		      %this.setLinearVelocityX(myModule.actualPlayerSpeed);
-		      myModule.touchdown=0;
+		      %this.setLinearVelocityY(myModule.playerVSpeed);
+		      %this.setLinearVelocityX(%this.actualSpeed);
+		      %this.touchdown=0;
 		      
 		      
 	      }else{
 		       //myScene.Gravity="0, -9.8";
-		       Guy.setLinearVelocityY(-myModule.playerVSpeed);
-		    %this.setLinearVelocityX(myModule.actualPlayerSpeed);
-		       myModule.touchdown=0;
+		       %this.setLinearVelocityY(-myModule.playerVSpeed);
+		    %this.setLinearVelocityX(%this.actualSpeed);
+		       %this.touchdown=0;
 		       
 	      }
 }else{
 	//echo("touch");
-	%this.setLinearVelocityX(myModule.actualPlayerSpeed);
-	myModule.touchdown=1;
+	%this.setLinearVelocityX(%this.actualSpeed);
+	%this.touchdown=1;
 	 
 }
 		
@@ -151,7 +155,7 @@ function BadGuy::onCollision(%this, %sceneobject, %collisiondetails)
 	if(%sceneobject.getSceneGroup()==1){
 		echo("1");
 		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
-		myModule.touchdown=1;
+		%this.touchdown=1;
 		
 		
 	}
@@ -159,7 +163,7 @@ function BadGuy::onCollision(%this, %sceneobject, %collisiondetails)
 	if(%sceneobject.getSceneGroup()==2){
 		echo("2");
 		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
-		myModule.touchdown=1;
+		%this.touchdown=1;
 		%sceneobject.setHeight(%sceneobject.getHeight()-0.5);
 		echo(%sceneobject.getHeight());
 		//%sceneobject.clearCollisionShapes();
