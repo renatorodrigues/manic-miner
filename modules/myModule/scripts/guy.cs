@@ -23,7 +23,7 @@ function createGuy(%x,%y)
     //%image.setFilterMode("Nearest");
     //%image.setImageFile("myModule:fatguy");
     
-    
+    %guy.groundSpeed=0;
     
     
     // Set the scroller to use an animation!
@@ -61,9 +61,17 @@ function createGuy(%x,%y)
 function Guy::onUpdate(%this)
 {	//echo("update");
 	//echo(%this.getContactCount ());
-  // %this.updateHorizontal();
+   
    %this.updateVertical();
+   %this.updateHorizontal();
    //%this.setCurrentAnimation();
+}
+
+function Guy::updateHorizontal(%this){
+	if(%this.groundSpeed!=0 && myModule.touchdown==1){
+		%this.setLinearVelocityX(myModule.actualPlayerSpeed-%this.groundSpeed);
+		
+	}
 }
 
 function Guy::updateVertical(%this)
@@ -146,9 +154,16 @@ function Guy::updateVertical(%this)
 function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 {
 	
-	if(%sceneobject.getSceneGroup()==1){
+	if(%sceneobject.getSceneGroup()!=4){
+		%this.groundSpeed=0;
+		
+	}else{
+		%this.groundSpeed=%sceneobject.Speed;
+	}
+	
+	if(%sceneobject.getSceneGroup()==1 || %sceneobject.getSceneGroup()==4){
 		//echo("1");
-		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
+		%this.setLinearVelocityX(myModule.actualPlayerSpeed-%this.groundSpeed);
 		myModule.touchdown=1;
 		
 		
@@ -156,7 +171,7 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 	
 	if(%sceneobject.getSceneGroup()==2){
 		//echo("2");
-		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
+		%this.setLinearVelocityX(myModule.actualPlayerSpeed-%this.groundSpeed);
 		myModule.touchdown=1;
 		%sceneobject.setHeight(%sceneobject.getHeight()-0.5);
 		echo(%sceneobject.getHeight());
@@ -180,6 +195,11 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 		%this.Position=%this.SpawnPos;
 		myModule.gravity=0;
 	}
+	
+	
+
+	
 }
+
 
 

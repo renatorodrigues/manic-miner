@@ -182,7 +182,7 @@ function BadGuy::onCollision(%this, %sceneobject, %collisiondetails)
    	   	 	       }
 		}
 	
-	if(%sceneobject.getSceneGroup()==1){
+	if(%sceneobject.getSceneGroup()==1 || %sceneobject.getSceneGroup()==4){
 		//echo("1  ---- "@%this.actualSpeed@" -- "@%this.N);
 		%this.setLinearVelocityX(%this.actualSpeed);
 		
