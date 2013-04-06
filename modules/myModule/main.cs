@@ -53,10 +53,16 @@ control.push();
 
 control.bind(keyboard, "g", toggleG); 
 control.bind(keyboard, space, toggleG); 
-control.bind(keyboard, up, toggleG); 
-control.bind(keyboard, down, toggleG); 
+control.bind(keyboard, up, toggleUp); 
+control.bind(keyboard, down, toggleDown); 
 control.bind(keyboard, right, playerRight); 
 control.bind(keyboard, left, playerLeft); 
+
+control.bind(keyboard, "w", toggleUp); 
+control.bind(keyboard, "s", toggleDown); 
+control.bind(keyboard, "d", playerRight); 
+control.bind(keyboard, "a", playerLeft); 
+
 }
 
 function playerRight(%val){
@@ -153,14 +159,26 @@ function playerLeft(%val){
 }
 
 
+function toggleUp(%val){
+	if( myModule.gravity==0){
+		toggleG(%val);
+	}
+}
+
+function toggleDown(%val){
+	if( myModule.gravity!=0){
+		toggleG(%val);
+	}
+
+}
+
 function toggleG(%val)
 {
 	//Guy.onUpdate();
    if(%val)
    {
       //echo("g key down");
-   } else
-   {
+   
       //echo("g key up");
       if(myModule.touchdown==1){
       	      myScene.Gravity="0, 0";
