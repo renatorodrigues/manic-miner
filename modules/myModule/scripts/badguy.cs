@@ -4,7 +4,7 @@ function spawnBadGuy(%x,%y)
 	
  // Create the sprite.
     %guy = new Sprite(BadGuy);
-    
+    %guy.SceneGroup = 10 ;
     // We want our spaceship to move and be affected by gravity and various forces
     // so we set its BodyType to dynamic
     %guy.setBodyType( dynamic );
@@ -57,7 +57,7 @@ function spawnBadGuy(%x,%y)
    
     // Add the sprite to the scene
     %guy.setLinearVelocityY(-myModule.playerVSpeed);
-    echo(%guy);
+    //echo(%guy);
     myScene.add( %guy );  
     
     
@@ -171,7 +171,7 @@ function BadGuy::onCollision(%this, %sceneobject, %collisiondetails)
 {
 	
 	if(%sceneobject.getSceneGroup()==1){
-		echo("1  ---- "@%this.actualSpeed@" -- "@%this.N);
+		//echo("1  ---- "@%this.actualSpeed@" -- "@%this.N);
 		%this.setLinearVelocityX(%this.actualSpeed);
 		if(%this.touchdown==1 && %this.dirChange==0){
 			 %this.actualSpeed=-%this.actualSpeed;

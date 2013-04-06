@@ -36,7 +36,7 @@ addNormalFloor(0,-15,25,2);
 addNormalFloor(15,-5.5,10,2);
 addNormalFloor(25,0,100,2);
 addClearingFloor(0,10,20,2);
-createGuy();
+createGuy(0,30); //"0 30"
 spawnBadGuy(-10,-5);
 
 spawnBadGuy(-15,-5);

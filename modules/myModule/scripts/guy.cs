@@ -1,4 +1,4 @@
-function createGuy()
+function createGuy(%x,%y)
 {
 	
 	
@@ -10,8 +10,8 @@ function createGuy()
     %guy.setBodyType( dynamic );
        
     // Set the position.
-    %guy.Position = "0 30";
-
+    %guy.Position = %x SPC %y;
+    %guy.SpawnPos=%x SPC %y;
     // Set the size.        
     %guy.Size = "4 4";
     
@@ -168,6 +168,11 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 			%sceneobject.setActive( false );
 			myModule.deleteBlocks++;
 		}
+	}
+	if(%sceneobject.getSceneGroup()==10){
+		echo("dead");
+		%this.Position=%this.SpawnPos;
+		myModule.gravity=0;
 	}
 }
 
