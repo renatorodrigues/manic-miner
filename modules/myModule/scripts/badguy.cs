@@ -18,7 +18,7 @@ function spawnBadGuy(%x,%y)
 
     // Set the size.        
     %guy.Size = "4 4";
-    
+    %guy.dirChange=0;
     // Set the layer closest to the camera (above the background)
     %guy.SceneLayer = 1;
     %guy.Friction="0.0";
@@ -27,7 +27,7 @@ function spawnBadGuy(%x,%y)
     //%image.setFilterMode("Nearest");
     //%image.setImageFile("myModule:fatguy");
     %guy.gravity=0;
-    %guy.actualSpeed=3;
+    %guy.actualSpeed=13;
     %guy.setLinearVelocityX(%guy.actualSpeed);
     
     // Set the scroller to use an animation!
@@ -120,31 +120,38 @@ function BadGuy::updateVertical(%this)
 		if(%this.tick>15){	
 	%this.tick=0;	
 	}
+	if(%down<3){
+		 if(%this.notfall==1 &&  %this.dirChange==0 && %this.touchdown==1){
+		      	      %this.actualSpeed=-%this.actualSpeed;
+		      	      %this.setLinearVelocityX(%this.actualSpeed);
+		      	     
+		      	     %this.dirChange=1;
+		      	       if(%this.actualSpeed>0){
+		      	       	       %this.playAnimation("myModule:BadGuyAnim");
+   	   	 	       }else{
+   	   	 	       	       %this.playAnimation("myModule:BadGuyAnim_Inv");
+   	   	 	       }
+		      }
+	}else{
+		%this.dirChange=0;
+	}
+	
 	if(%down==0){
 	//echo("air");
 
 	if(%this.gravity!=0){
 		      //myScene.Gravity= "0, 9.8";
-		      if(%this.notfall==1){
-		      	      %this.setLinearVelocityX(-%this.getLinearVelocityX());
-		      	      %this.actualSpeed=%this.getLinearVelocityX();
-		      }else{
-			      %this.setLinearVelocityY(myModule.playerVSpeed);
+		       %this.setLinearVelocityY(myModule.playerVSpeed);
 			      %this.setLinearVelocityX(%this.actualSpeed);
 			      %this.touchdown=0;
-		      }
 		      
 		      
 	      }else{
-	      	       if(%this.notfall==1){
-		      	      %this.setLinearVelocityX(-%this.getLinearVelocityX());
-		      	      %this.actualSpeed=%this.getLinearVelocityX();
-		      }else{
 		       //myScene.Gravity="0, -9.8";
 		       	%this.setLinearVelocityY(-myModule.playerVSpeed);
 		       	%this.setLinearVelocityX(%this.actualSpeed);
 		       	%this.touchdown=0;
-		      }
+		      
 		       
 	      }
 }else{
@@ -164,8 +171,19 @@ function BadGuy::onCollision(%this, %sceneobject, %collisiondetails)
 {
 	
 	if(%sceneobject.getSceneGroup()==1){
-		echo("1");
-		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
+		echo("1  ---- "@%this.actualSpeed@" -- "@%this.N);
+		%this.setLinearVelocityX(%this.actualSpeed);
+		if(%this.touchdown==1 && %this.dirChange==0){
+			 %this.actualSpeed=-%this.actualSpeed;
+		      	      %this.setLinearVelocityX(%this.actualSpeed);
+		      	     
+		      	     %this.dirChange=1;
+		      	       if(%this.actualSpeed>0){
+		      	       	       %this.playAnimation("myModule:BadGuyAnim");
+   	   	 	       }else{
+   	   	 	       	       %this.playAnimation("myModule:BadGuyAnim_Inv");
+   	   	 	       }
+		}
 		%this.touchdown=1;
 		
 		
@@ -173,7 +191,7 @@ function BadGuy::onCollision(%this, %sceneobject, %collisiondetails)
 	
 	if(%sceneobject.getSceneGroup()==2){
 		echo("2");
-		%this.setLinearVelocityX(myModule.actualPlayerSpeed);
+		%this.setLinearVelocityX(%this.actualSpeed);
 		%this.touchdown=1;
 		%sceneobject.setHeight(%sceneobject.getHeight()-0.5);
 		echo(%sceneobject.getHeight());
