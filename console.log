@@ -1,4 +1,4 @@
-//-------------------------- 4/6/2013 -- 18:35:17 -----
+//-------------------------- 4/6/2013 -- 18:36:45 -----
 Console trace is off.
 using display 0x42732c0
 Activating the OpenGL display device...
@@ -36,25 +36,17 @@ OpenAL Driver Init Success
 1142
 1.5
 1.5
-myModule:FatGuyAnim
-toinv
-myModule:FatGuyAnim
-toinv
-myModule:FatGuyAnim_Inv
-toanim
-myModule:FatGuyAnim
-toinv
-myModule:FatGuyAnim_Inv
-toanim
-myModule:FatGuyAnim
-toinv
 myModule:FatGuyAnim_Inv
 toanim
 myModule:FatGuyAnim_Inv
 toanim
 myModule:FatGuyAnim
 toinv
-myModule:FatGuyAnim_Inv
-toanim
+1.5
+1.5
+1.5
+1.5
+1.5
+1.5
 Shutting down the OpenGL display device...
 Killing the texture manager...
