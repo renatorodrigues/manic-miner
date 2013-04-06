@@ -5,7 +5,10 @@ if(!isObject(GuiDefaultProfile)) new GuiControlProfile (GuiDefaultProfile){
 	 // font
     fontType = $platformFontType;
     fontSize =40;
-
+    
+    fillColor="0 0 0";
+    fillColorHL="0 0 0";
+    fillColorNA="0 0 0";
     fontColor = "255 255 255";
     fontColorHL = "32 100 100";
     fontColorNA = "0 0 0";

@@ -64,7 +64,23 @@ function Guy::onUpdate(%this)
    
    %this.updateVertical();
    %this.updateHorizontal();
+   %this.nextRoom();
    //%this.setCurrentAnimation();
+}
+
+function Guy::nextRoom(%this){
+	if(getWord(%this.getPosition(),1)>37.5 && mySceneWindow.Pos==0){
+		mySceneWindow.setCameraPosition( 0, 62.5 );
+		//%this.Position=getWord(%this.getPosition(),0) SPC 50;
+		mySceneWindow.Pos=1;
+	}else{
+		if(getWord(%this.getPosition(),1)<37.5 && mySceneWindow.Pos==1){
+			mySceneWindow.setCameraPosition( 0, 0 );
+			mySceneWindow.Pos=0;
+			//%this.Position=getWord(%this.getPosition(),0) SPC 37.5;
+		}	
+	}
+
 }
 
 function Guy::updateHorizontal(%this){

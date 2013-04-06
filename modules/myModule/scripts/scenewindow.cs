@@ -22,6 +22,7 @@ function createSceneWindow()
     mySceneWindow.setCameraSize( 100, 75 );
     mySceneWindow.setCameraZoom( 1 );
     mySceneWindow.setCameraAngle( 0 );
+    mySceneWindow.Pos=0;
     
 }
 

@@ -24,11 +24,11 @@ function createBackground()
     %background.BackgroundColor = "Black";
     %background.UseBackgroundColor = true;
     // Create border collisions.
-    %background.createEdgeCollisionShape( -50, -25, -50, 37.5 );
-    %background.createEdgeCollisionShape( 50, -25, 50, 37.5);
-    %background.createEdgeCollisionShape( -50, 37.5, 50, 37.5 );
+    %background.createEdgeCollisionShape( -50, -25, -50, 112.5 );
+    %background.createEdgeCollisionShape( 50, -25, 50, 112.5);
+    %background.createEdgeCollisionShape( -50, 112.5, 20, 112.5 );
     %background.createEdgeCollisionShape( -50, -25, 50, -25 );   
-   
+   //%background.createEdgeCollisionShape( 20, 37.5, 20, 50);
     //%background.setDefaultRestitution(1);
     // Add the sprite to the scene.
     myScene.add( %background );   
@@ -37,6 +37,11 @@ function createBackground()
     addNormalFloor(0,-25,100,2);
      addNormalFloor(-49,6.25,2,62.5);
      addNormalFloor(49,6.25,2,62.5);
-       addNormalFloor(0,36.5,100,2);
+       addNormalFloor(-15,36.5,70,2);
+    
+     addNormalFloor(-15,36.5,70,2);
+     addNormalFloor(-49,67.75,2,62.5);
+     addNormalFloor(49,67.75,2,62.5);
+       addNormalFloor(0,99,100,2);
     
 }

@@ -47,7 +47,7 @@ myModule.tick=0;
 myModule.itemCount=0;
 mySceneWindow.setScene(myScene);
 myScene.setDebugOn( "collision" );
-myScene.setDebugOn( "fps" );
+//myScene.setDebugOn( "fps" );
 createBackground();
 
 addNormalFloor(0,-15,25,2);
@@ -55,6 +55,8 @@ addNormalFloor(15,-5.5,10,2);
 addNormalFloor(25,0,100,2);
 addMovingFloor(-10,10,10,2,7,1);
 addCatchable(10,23);
+
+addCatchable(-5,70);
 addStalagmite(25,2);
 addEnd(44,-21);
 addClearingFloor(0,10,20,2);

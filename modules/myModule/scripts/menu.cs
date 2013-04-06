@@ -33,6 +33,15 @@ function createMenu(){
       Visible = "1";
    };
    
+   new GuiBitmapCtrl(backmenu) {
+      
+      HorizSizing = "relative";
+      VertSizing = "relative";
+      position = "0 660";
+      Extent = "1024 150";
+      Visible = "1";
+      bitmap="artwork/black.png";
+   };
    new GuiTextCtrl(highScoreCounterTitle) {
       
       HorizSizing = "relative";
@@ -111,7 +120,7 @@ function createMenu(){
       text = "0";
       Visible = "1";
    };
-   
+   menuGui.addGuiControl(backmenu);
    menuGui.addGuiControl(scoreCounterTitle);
    menuGui.addGuiControl(scoreValue);
    menuGui.addGuiControl(highScoreCounterTitle);
