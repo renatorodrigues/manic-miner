@@ -1,7 +1,0 @@
-<AnimationAsset
-    AssetName="FatGuyAnim"
-    Image="@asset=myModule:FatGuy"
-    AnimationFrames="0 1 2"
-    AnimationTime="0.2"    
-    AnimationCycle="true"
-/>
