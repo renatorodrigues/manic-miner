@@ -85,7 +85,7 @@ function BadGuy::updateVertical(%this)
 	%this.tick++;
 	
 	if(%this.followG==true){
-		if(myModule.gravity!=%this.gravity && %this.touchdown==1){
+		if(myModule.gravity!=%this.gravity){
 			%this.gravity=myModule.gravity;
 			if(%this.gravity==0){
 				%this.setAngle(0);
