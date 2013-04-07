@@ -71,6 +71,8 @@ spawnBadGuy(-10,-5);
 
 spawnBadGuy(-15,-5);
 
+spawnGravityBadGuy(-20,-10);
+
 Guy.setLinearVelocityY(-myModule.playerVSpeed);
 
 filewrite();
