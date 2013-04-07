@@ -52,7 +52,7 @@ myModule.touchdown=0;
 myModule.tick=0;
 myModule.itemCount=0;
 mySceneWindow.setScene(myScene);
-myScene.setDebugOn( "collision" );
+//myScene.setDebugOn( "collision" );
 //myScene.setDebugOn( "fps" );
 createBackground();
 

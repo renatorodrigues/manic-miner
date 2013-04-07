@@ -1,0 +1,9 @@
+<ImageAsset
+    AssetName="movingFloor"
+    ImageFile="movingFloor.png"
+    FilterMode="Nearest"
+    CellCountX="3"
+    CellCountY="1"
+    CellWidth="32"
+    CellHeight="32"
+    />
