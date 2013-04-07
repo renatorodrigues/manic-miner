@@ -85,8 +85,12 @@ function Guy::nextRoom(%this){
 
 function Guy::updateHorizontal(%this){
 	if(%this.groundSpeed!=0){
-		%this.setLinearVelocityX(myModule.actualPlayerSpeed-%this.groundSpeed);
-		
+		if(myModule.gravity==0){
+			%this.setLinearVelocityX(myModule.actualPlayerSpeed-%this.groundSpeed);
+		}else{
+			%this.setLinearVelocityX(myModule.actualPlayerSpeed+%this.groundSpeed);
+		}
+			
 	}
 }
 
