@@ -15,6 +15,9 @@ function addNormalFloor(%x,%y,%w,%h){
   if(%w>=%h){
     myModule.floor[myModule.nfloor].Image = "myModule:Tile";
     myModule.floor[myModule.nfloor].setRepeatX(%w/2);
+    if(%y==-26||%y==99){
+      myModule.floor[myModule.nfloor].Image = "myModule:floor";
+    }
     
   }else{
     myModule.floor[myModule.nfloor].Image = "myModule:Wall";

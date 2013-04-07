@@ -30,6 +30,7 @@ exec("./scripts/badguy.cs");
 exec("./scripts/normal_floor.cs");
 exec("./scripts/movingFloor.cs");
 exec("./scripts/clearing_floor.cs");
+exec("./scripts/bush.cs");
 exec("./scripts/stalagmites.cs");
 exec("./scripts/end.cs");
 exec("./scripts/menu.cs");
@@ -58,13 +59,15 @@ createBackground();
 
 addNormalFloor(0,-15,25,2);
 addNormalFloor(15,-5.5,10,2);
-addNormalFloor(25,0,100,2);
+addNormalFloor(13,0,70,2);
 addMovingFloor(-10,10,10,2,7,1);
+addNormalFloor(-13,36.5,70,2);
 addCatchable(10,23);
 
 addCatchable(-5,70);
-addStalagmite(25,2);
-addEnd(44,-21);
+addBush(25,2);
+addStalagmite(-5,34.5);
+addEnd(45,-19.5);
 addClearingFloor(0,10,20,2);
 createGuy(0,30); //"0 30"
 spawnBadGuy(-10,-5);

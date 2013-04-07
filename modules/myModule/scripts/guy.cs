@@ -221,6 +221,7 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 		}else{
 			%sceneobject.catched=true;
 			%sceneobject.setActive( false );
+			%sceneobject.setVisible(false);
 			%this.catchedItems++;
 			
 		}

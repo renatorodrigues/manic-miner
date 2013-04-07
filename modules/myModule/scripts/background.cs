@@ -33,15 +33,15 @@ function createBackground()
     // Add the sprite to the scene.
     myScene.add( %background );   
 
-    
-    addNormalFloor(0,-25,100,2);
-     addNormalFloor(-49,6.25,2,62.5);
-     addNormalFloor(49,6.25,2,62.5);
-       addNormalFloor(-15,36.5,70,2);
-    
-     addNormalFloor(-15,36.5,70,2);
-     addNormalFloor(-49,67.75,2,62.5);
-     addNormalFloor(49,67.75,2,62.5);
-       addNormalFloor(0,99,100,2);
+    addNormalFloor(0,-26,100,2); //FIXME y=-26&99 is hardcoded to have bottom floor image 
+
+    addNormalFloor(0,-23.5,96,2);
+    addNormalFloor(-49,37.5,2,125);
+    addNormalFloor(49,37.5,2,125);
+   
+    //addNormalFloor(-49,67.75,2,62.5);
+    //addNormalFloor(49,67.75,2,62.5);
+    addNormalFloor(0,99,100,2);
+    addNormalFloor(0,97,96,2);
     
 }
