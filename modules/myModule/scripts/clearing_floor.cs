@@ -17,7 +17,7 @@ function addClearingFloor(%x,%y,%w,%h){
 
     myModule.cfloor[myModule.cfloor].Image = "myModule:clearFloor";
     myModule.cfloor[myModule.cfloor].UseBackgroundColor = true;
-    myModule.floor[myModule.nfloor].setRepeatX(%w/2);
+    myModule.floor[myModule.cfloor].setRepeatX(%w/2);
     /*
     myModule.cfloor[myModule.cfloor].createEdgeCollisionShape( -%cw/2, -%h/2, -%cw/2, %h/2 );
     myModule.cfloor[myModule.cfloor].createEdgeCollisionShape( %cw/2, -%h/2, %cw/2, %h/2);

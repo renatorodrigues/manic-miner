@@ -16,10 +16,10 @@ function addStalagmite(%x,%y){
    
    %stal.Image = "myModule:ice"; //missing image
     %stal.UseBackgroundColor = true;
-    %stal.createEdgeCollisionShape( -%w/2, -%h/2, 0, %h/2 );
-   %stal.createEdgeCollisionShape( %w/2, -%h/2, 0, %h/2);
+    %stal.createEdgeCollisionShape( -%w/2, %h/2, 0, -%h/2 );
+   %stal.createEdgeCollisionShape( %w/2, %h/2, 0, -%h/2);
   // %stal.createEdgeCollisionShape( -%w/2, %h/2, %w/2, %h/2 );
-    %stal.createEdgeCollisionShape( -%w/2, -%h/2, %w/2, -%h/2 );   
+    %stal.createEdgeCollisionShape( -%w/2, %h/2, %w/2, %h/2 );   
     myScene.add( %stal);  
 
     

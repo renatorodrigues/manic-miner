@@ -110,8 +110,10 @@ function BadGuy::updateVertical(%this)
 	
 	if(%this.gravity==0){
 		%ny=getWord(%this.getRenderPosition(),1)-2.1;
+		%m=2;
 	}else{
 		%ny=getWord(%this.getRenderPosition(),1)+2.1;
+		%m=-2;
 	}
 	if(%this.actualSpeed>0){
 		%nx=getWord(%this.getRenderPosition(),0)+2.1;
@@ -120,6 +122,8 @@ function BadGuy::updateVertical(%this)
 	}
 	%down=0;
 	%front=myScene.pickRayCollision(%this.getRenderPosition(),%nx SPC getWord(%this.getRenderPosition(),1));
+	%front1=myScene.pickRayCollision(%this.getRenderPosition(),%nx SPC getWord(%this.getRenderPosition(),1)-%m);
+	%front2=myScene.pickRayCollision(%this.getRenderPosition(),%nx SPC getWord(%this.getRenderPosition(),1)+%m);
 	%obj[0]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0) SPC %ny);
 	%obj[1]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0)-2 SPC %ny);
 	%obj[2]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0)+2 SPC %ny);
@@ -154,7 +158,7 @@ function BadGuy::updateVertical(%this)
 		if(%this.tick>15){	
 	%this.tick=0;	
 	}
-	if((%down<3 &&  %down>0 &&%this.followG==false) || (%down<3 && %down>0&&  %this.followG==true) || %front!$="" ){
+	if((%down<3 &&  %down>0 &&%this.followG==false) || (%down<3 && %down>0&&  %this.followG==true) || %front!$="" || %front1!$="" || %front2!$=""){
 		 if((%this.notfall==1 || %front!$="")&&  %this.dirChange==0){
 		      	      %this.actualSpeed=-%this.actualSpeed;
 		      	      %this.setLinearVelocityX(%this.actualSpeed);
