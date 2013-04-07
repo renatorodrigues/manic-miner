@@ -144,8 +144,8 @@ function BadGuy::updateVertical(%this)
 		if(%this.tick>15){	
 	%this.tick=0;	
 	}
-	if((%down<3 &&  %this.followG==false) || (%down<3 && %down>0&&  %this.followG==true) ){
-		 if(%this.notfall==1 &&  %this.dirChange==0 && %this.touchdown==1){
+	if((%down<3 &&  %down>0 &&%this.followG==false) || (%down<3 && %down>0&&  %this.followG==true) ){
+		 if(%this.notfall==1 &&  %this.dirChange==0){
 		      	      %this.actualSpeed=-%this.actualSpeed;
 		      	      %this.setLinearVelocityX(%this.actualSpeed);
 		      	     
