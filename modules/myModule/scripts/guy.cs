@@ -85,13 +85,9 @@ function Guy::nextRoom(%this){
 
 function Guy::updateHorizontal(%this){
 	if(%this.groundSpeed!=0){
-		if(myModule.gravity==0){
+		
 			%this.setLinearVelocityX(myModule.actualPlayerSpeed-%this.groundSpeed);
-		}else{
-			%this.setLinearVelocityX(myModule.actualPlayerSpeed+%this.groundSpeed);
-		}
-			
-	}
+	}		
 }
 
 function Guy::updateVertical(%this)
@@ -178,7 +174,12 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 		%this.groundSpeed=0;
 		
 	}else{
-		%this.groundSpeed=%sceneobject.Speed;
+		if(myModule.gravity==0){
+			%this.groundSpeed=%sceneobject.Speed;
+		}else{
+			%this.groundSpeed=-%sceneobject.Speed;
+		}
+		
 	}
 	
 	if(%sceneobject.getSceneGroup()==$NORMAL_TILE || %sceneobject.getSceneGroup()==$MOVING_TILE){
