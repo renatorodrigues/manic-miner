@@ -83,6 +83,10 @@ function BadGuy::updateVertical(%this)
 {
 	
 	%this.tick++;
+	if(%this.getLinearVelocityX()<0.2 &&%this.getLinearVelocityX()>- 0.2){
+		%this.setLinearVelocityX(%this.actualSpeed);
+		      	     
+	}
 	
 	if(%this.followG==true){
 		if(myModule.gravity!=%this.gravity){
@@ -109,7 +113,13 @@ function BadGuy::updateVertical(%this)
 	}else{
 		%ny=getWord(%this.getRenderPosition(),1)+2.1;
 	}
+	if(%this.actualSpeed>0){
+		%nx=getWord(%this.getRenderPosition(),0)+2.1;
+	}else{
+		%nx=getWord(%this.getRenderPosition(),0)-2.1;
+	}
 	%down=0;
+	%front=myScene.pickRayCollision(%this.getRenderPosition(),%nx SPC getWord(%this.getRenderPosition(),1));
 	%obj[0]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0) SPC %ny);
 	%obj[1]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0)-2 SPC %ny);
 	%obj[2]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0)+2 SPC %ny);
@@ -144,8 +154,8 @@ function BadGuy::updateVertical(%this)
 		if(%this.tick>15){	
 	%this.tick=0;	
 	}
-	if((%down<3 &&  %down>0 &&%this.followG==false) || (%down<3 && %down>0&&  %this.followG==true) ){
-		 if(%this.notfall==1 &&  %this.dirChange==0){
+	if((%down<3 &&  %down>0 &&%this.followG==false) || (%down<3 && %down>0&&  %this.followG==true) || %front!$="" ){
+		 if((%this.notfall==1 || %front!$="")&&  %this.dirChange==0){
 		      	      %this.actualSpeed=-%this.actualSpeed;
 		      	      %this.setLinearVelocityX(%this.actualSpeed);
 		      	     
@@ -165,12 +175,13 @@ function BadGuy::updateVertical(%this)
    	   	 	       }
 		      }
 	}else{
+		
 		%this.dirChange=0;
 	}
 	
 	if(%down==0){
 	//echo("air");
-
+	%this.dirChange=0;
 	if((%this.gravity!=0 )){
 		      //myScene.Gravity= "0, 9.8";
 		       %this.setLinearVelocityY(myModule.playerVSpeed);
@@ -196,17 +207,13 @@ function BadGuy::updateVertical(%this)
 
 }
 
-
-
-
-function BadGuy::onCollision(%this, %sceneobject, %collisiondetails)
-{
-	
-	if(%this.touchdown==1 && %this.dirChange==0){
-			 %this.actualSpeed=-%this.actualSpeed;
+function BadGuy::changeDir(%this){
+	//echo("from: "@%this.actualSpeed@" to: "-%this.actualSpeed);
+			%this.actualSpeed=-%this.actualSpeed;
 		      	      %this.setLinearVelocityX(%this.actualSpeed);
 		      	     
 		      	     %this.dirChange=1;
+		      	     
 		      	      if(%this.actualSpeed>0){
 		      	       	       if(%this.gravity==0){
 		      	       	       	       %this.playAnimation("myModule:BadGuyAnim");
@@ -220,8 +227,16 @@ function BadGuy::onCollision(%this, %sceneobject, %collisiondetails)
 		      	       	       	        %this.playAnimation("myModule:BadGuyAnim_Inv");
 		      	       	       }
    	   	 	       }
-		}
+}
+
+
+function BadGuy::onCollision(%this, %sceneobject, %collisiondetails)
+{
 	
+	
+	
+		
+		
 	if(%sceneobject.getSceneGroup()==$NORMAL_TILE || %sceneobject.getSceneGroup()==$MOVING_TILE){
 		//echo("1  ---- "@%this.actualSpeed@" -- "@%this.N);
 		%this.setLinearVelocityX(%this.actualSpeed);
