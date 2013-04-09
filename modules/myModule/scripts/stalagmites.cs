@@ -1,5 +1,5 @@
 
-function addStalagmite(%x,%y){
+function addStalagmite(%x, %y){
 		
 	%stal=new Sprite();
 	%stal.setBodyType( static );

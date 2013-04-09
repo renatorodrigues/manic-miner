@@ -13,7 +13,7 @@ function createBackground()
 
     // Set the object's size. Notice that this corresponds to the size of our camera, which was created in
     // scenewindow.cs. The background will thus cover the entirety of our scenewindow.
-    %background.Size = "100 62.5";
+    %background.Size = "100 62";
     %background.Friction=0;
     // Set to the furthest background layer.
     %background.SceneLayer = 31;
@@ -33,15 +33,21 @@ function createBackground()
     // Add the sprite to the scene.
     myScene.add( %background );   
 
-    addNormalFloor(0,-26,100,2); //FIXME y=-26&99 is hardcoded to have bottom floor image 
+    //addNormalFloor(0,-26,100,2); //FIXME y=-26&99 is hardcoded to have bottom floor image 
 
-    addNormalFloor(0,-23.5,96,2);
-    addNormalFloor(-49,37.5,2,125);
-    addNormalFloor(49,37.5,2,125);
+    //addNormalFloor(0,-23.5,96,2);
+    //addNormalFloor(-49,37.5,2,125);
+    //addNormalFloor(49,37.5,2,125);
    
     //addNormalFloor(-49,67.75,2,62.5);
     //addNormalFloor(49,67.75,2,62.5);
-    addNormalFloor(0,99,100,2);
-    addNormalFloor(0,97,96,2);
     
+    //addNormalFloor(0,99,100,2);
+    //addNormalFloor(0,97,96,2);
+
+
+
+
+
+
 }

@@ -25,6 +25,7 @@ exec("./gui/guiProfiles.cs");
 exec("./scripts/fileIO.cs");
 
 exec("./scripts/background.cs");
+exec("./scripts/level.cs");
 exec("./scripts/guy.cs");
 exec("./scripts/badguy.cs");
 exec("./scripts/normal_floor.cs");
@@ -56,7 +57,8 @@ mySceneWindow.setScene(myScene);
 //myScene.setDebugOn( "collision" );
 //myScene.setDebugOn( "fps" );
 createBackground();
-
+createLevel();
+/*
 addNormalFloor(0,-15,25,2);
 addNormalFloor(15,-5.5,10,2);
 addNormalFloor(13,0,70,2);
@@ -69,12 +71,13 @@ addBush(25,2);
 addStalagmite(-5,34.5);
 addEnd(45,-19.5);
 addClearingFloor(0,10,20,2);
+*/
 createGuy(0,30); //"0 30"
-spawnBadGuy(-10,-5);
+//spawnBadGuy(-10,-5);
 
-spawnBadGuy(-15,-5);
+//spawnBadGuy(-15,-5);
 
-spawnGravityBadGuy(-20,-10);
+//spawnGravityBadGuy(-20,-10);
 
 Guy.setLinearVelocityY(-myModule.playerVSpeed);
 

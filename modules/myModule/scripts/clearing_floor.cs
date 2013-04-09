@@ -1,17 +1,17 @@
-function addClearingFloor(%x,%y,%w,%h){
-  %cw=2;
-  for(%i=0;%cw*%i<%w;%i++){
+function addClearingFloor(%x, %y, %w, %h) {
+  %cw = 2;
+  for(%i = %x-(%w/2); %i < %x+(%w/2); %i = %i + 2){
+    //echo(%i);
 
-    myModule.cfloor[myModule.cfloor]=new Sprite();
-    myModule.cfloor[myModule.cfloor].a="ack";
-    myModule.cfloor[myModule.cfloor].setBodyType( static );
+    myModule.cfloor[myModule.cfloor] = new Sprite();
+    myModule.cfloor[myModule.cfloor].a = "ack";
+    myModule.cfloor[myModule.cfloor].setBodyType(static);
 
 
-    myModule.cfloor[myModule.cfloor].Position = (%i*%cw+%x) SPC %y;
-
+    myModule.cfloor[myModule.cfloor].Position = %i + 1 SPC %y;
 
     myModule.cfloor[myModule.cfloor].Size = %cw SPC %h;
-    myModule.cfloor[myModule.cfloor].Friction=0;
+    myModule.cfloor[myModule.cfloor].Friction = 0;
     myModule.cfloor[myModule.cfloor].SceneLayer = 5;
     myModule.cfloor[myModule.cfloor].SceneGroup = $CLEAR_TILE ;
 
