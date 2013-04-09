@@ -72,7 +72,6 @@ addStalagmite(-5,34.5);
 addEnd(45,-19.5);
 addClearingFloor(0,10,20,2);
 */
-createGuy(0,30); //"0 30"
 //spawnBadGuy(-10,-5);
 
 //spawnBadGuy(-15,-5);
