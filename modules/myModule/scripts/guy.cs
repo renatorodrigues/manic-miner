@@ -40,8 +40,8 @@ function createGuy(%x,%y)
     // sceneobject automatically.
     %guy.createPolygonBoxCollisionShape(4,3,0,-0.5);
 
-  
-    
+    %guy.lives=3;
+    %guy.alive=1;
    
     
     //%guy.setCollisionLayers(all);
@@ -164,12 +164,56 @@ function Guy::updateVertical(%this)
 
 }
 
+function Guy::die(%this){
+	echo("die ");
+	if( myModule.indie==0){
+		myModule.indie=1;
+		if(%this.lives>0){
+			
+			%this.lives--;
+			if(%this.lives==2){
+				life3.setVisible(false); 
+			}
+			if(%this.lives==1){
+				life2.setVisible(false); 
+			}
+			if(%this.lives==0){
+				life1.setVisible(false); 
+			}
+			%this.respawn();
+			
+		}else{
+			%this.alive=0;
+			if(myModule.gravity!=0){
+				myModule.touchdown=1;
+				toggleG(true);
+			}
+			%this.safeDelete();
+		}
+	}
+	
+}
 
+function Guy::respawn(%this){
+	%this.Position=%this.SpawnPos;
+		if(myModule.gravity!=0){
+			myModule.touchdown=1;
+			toggleG(true);
+		}
+		%this.alive=1;
+		//myModule.indie=0;
+		%this.schedule(50,setAlive);
+		
+}
 
+function Guy::setAlive(){
+	//echo("alive");
+	myModule.indie=0;
+}
 
 function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 {
-	
+	//echo("col "@myModule.indie);
 	if(%sceneobject.getSceneGroup()!=$MOVING_TILE){
 		%this.groundSpeed=0;
 		
@@ -207,13 +251,11 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 			myModule.deleteBlocks++;
 		}
 	}
-	if(%sceneobject.getSceneGroup()==$ENEMY){
-		echo("dead");
-		%this.Position=%this.SpawnPos;
-		if(myModule.gravity!=0){
-			myModule.touchdown=1;
-			toggleG(true);
-		}
+	if(%sceneobject.getSceneGroup()==$ENEMY && myModule.indie==0){
+		 
+		 
+		//echo("dead "@myModule.indie);
+		%this.die();
 	}
 	
 	if(%sceneobject.getSceneGroup()==$ITEM){

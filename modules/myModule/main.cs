@@ -53,6 +53,7 @@ myModule.rightKey=0;
 myModule.touchdown=0;
 myModule.tick=0;
 myModule.itemCount=0;
+myModule.indie=0;
 mySceneWindow.setScene(myScene);
 //myScene.setDebugOn( "collision" );
 //myScene.setDebugOn( "fps" );
@@ -100,7 +101,7 @@ control.bind(keyboard, "a", playerLeft);
 }
 
 function playerRight(%val){
-	Guy.onUpdate();
+	
 	if(%val)
    {
    	   
@@ -146,7 +147,7 @@ function playerRight(%val){
 }
 
 function playerLeft(%val){
-	Guy.onUpdate();
+	
 	if(%val)
 	{
       
