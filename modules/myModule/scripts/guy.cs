@@ -233,7 +233,7 @@ function Guy::respawn(%this){
 		backmenuwhite.value=backmenuwhite.maxWidth;
 		%this.alive=1;
 		//myModule.indie=0;
-		%this.schedule(50,setAlive);
+		%this.schedule(500,setAlive);
 		
 }
 
