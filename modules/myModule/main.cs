@@ -45,6 +45,11 @@ myModule.main=1;
 new ActionMap(control);
 	control.push();
 	control.bind(keyboard, enter, startGame); 
+	if (!alxIsPlaying(myModule.SplashM))
+      {
+         // Play the selected music
+         myModule.SplashM = alxPlay("myModule:welcomeSound");
+      }
 }
 
 
@@ -52,6 +57,7 @@ function startGame(){
 	if(myModule.main==0){
 		return;
 	}
+	alxStop(myModule.SplashM);
 	if (!alxIsPlaying(myModule.Handle))
       {
          // Play the selected music
