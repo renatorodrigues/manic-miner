@@ -1,0 +1,6 @@
+<AudioAsset
+    AssetName="jumpSound"
+    AssetAutoUnload="0"
+    AudioFile="jump.wav"
+    Looping="1"
+    />

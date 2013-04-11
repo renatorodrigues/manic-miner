@@ -40,65 +40,85 @@ exec("./scripts/catchable.cs");
 createSceneWindow();
 createScene();
 createMenu();
-myModule.badguy=0;
-myModule.nfloor=0;
-myModule.cfloor=0;
-myModule.deleteBlocks=0;
-myModule.playerSpeed=14;
-myModule.playerVSpeed=50;
-myModule.gravity=0;
-myModule.actualPlayerSpeed=0;
-myModule.leftKey=0;
-myModule.rightKey=0;
-myModule.touchdown=0;
-myModule.tick=0;
-myModule.itemCount=0;
-myModule.indie=0;
-mySceneWindow.setScene(myScene);
-//myScene.setDebugOn( "collision" );
-//myScene.setDebugOn( "fps" );
-createBackground();
-createLevel();
-/*
-addNormalFloor(0,-15,25,2);
-addNormalFloor(15,-5.5,10,2);
-addNormalFloor(13,0,70,2);
-addMovingFloor(-10,10,10,2,7,1);
-addNormalFloor(-13,36.5,70,2);
-addCatchable(10,23);
-
-addCatchable(-5,70);
-addBush(25,2);
-addStalagmite(-5,34.5);
-addEnd(45,-19.5);
-addClearingFloor(0,10,20,2);
-*/
-//spawnBadGuy(-10,-5);
-
-//spawnBadGuy(-15,-5);
-
-//spawnGravityBadGuy(-20,-10);
-
-Guy.setLinearVelocityY(-myModule.playerVSpeed);
-
-filewrite();
-
+//splash.setVisibility(1);
+myModule.main=1;
 new ActionMap(control);
-control.push();
+	control.push();
+	control.bind(keyboard, enter, startGame); 
+}
 
-control.bind(keyboard, "g", toggleG); 
-control.bind(keyboard, space, toggleG); 
-control.bind(keyboard, up, toggleUp); 
-control.bind(keyboard, down, toggleDown); 
-control.bind(keyboard, right, playerRight); 
-control.bind(keyboard, left, playerLeft); 
 
-control.bind(keyboard, "w", toggleUp); 
-control.bind(keyboard, "s", toggleDown); 
-control.bind(keyboard, "d", playerRight); 
-control.bind(keyboard, "a", playerLeft); 
+function startGame(){
+	if(myModule.main==0){
+		return;
+	}
+	if (!alxIsPlaying(myModule.Handle))
+      {
+         // Play the selected music
+         myModule.Handle = alxPlay("myModule:backgroundSound");
+      }
+	splash.setVisible(false); 
+	myModule.main=0;
+	myModule.badguy=0;
+	myModule.nfloor=0;
+	myModule.cfloor=0;
+	myModule.deleteBlocks=0;
+	myModule.playerSpeed=14;
+	myModule.playerVSpeed=50;
+	myModule.gravity=0;
+	myModule.actualPlayerSpeed=0;
+	myModule.leftKey=0;
+	myModule.rightKey=0;
+	myModule.touchdown=0;
+	myModule.tick=0;
+	myModule.itemCount=0;
+	myModule.indie=0;
+	mySceneWindow.setScene(myScene);
+	//myScene.setDebugOn( "collision" );
+	//myScene.setDebugOn( "fps" );
+	createBackground();
+	createLevel();
+	/*
+	addNormalFloor(0,-15,25,2);
+	addNormalFloor(15,-5.5,10,2);
+	addNormalFloor(13,0,70,2);
+	addMovingFloor(-10,10,10,2,7,1);
+	addNormalFloor(-13,36.5,70,2);
+	addCatchable(10,23);
+	
+	addCatchable(-5,70);
+	addBush(25,2);
+	addStalagmite(-5,34.5);
+	addEnd(45,-19.5);
+	addClearingFloor(0,10,20,2);
+	*/
+	//spawnBadGuy(-10,-5);
+	
+	//spawnBadGuy(-15,-5);
+	
+	//spawnGravityBadGuy(-20,-10);
+	
+	Guy.setLinearVelocityY(-myModule.playerVSpeed);
+	
+	filewrite();
+	
+	
+	
+	control.bind(keyboard, "g", toggleG); 
+	control.bind(keyboard, space, toggleG); 
+	control.bind(keyboard, up, toggleUp); 
+	control.bind(keyboard, down, toggleDown); 
+	control.bind(keyboard, right, playerRight); 
+	control.bind(keyboard, left, playerLeft); 
+	
+	control.bind(keyboard, "w", toggleUp); 
+	control.bind(keyboard, "s", toggleDown); 
+	control.bind(keyboard, "d", playerRight); 
+	control.bind(keyboard, "a", playerLeft); 
+
 
 }
+
 
 function playerRight(%val){
 	

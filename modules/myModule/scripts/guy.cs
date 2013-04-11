@@ -150,7 +150,12 @@ function Guy::updateVertical(%this)
 	}
 	if(%down==0){
 	//echo("air");
-	
+	if (!alxIsPlaying(Guy.jumpsound))
+		{
+			// Play the selected music
+			echo("start2");
+         	Guy.jumpsound = alxPlay("myModule:jumpSound");
+         	}
 	if(myModule.gravity!=0){
 		      //myScene.Gravity= "0, 9.8";
 		      Guy.setLinearVelocityY(myModule.playerVSpeed);
@@ -169,6 +174,7 @@ function Guy::updateVertical(%this)
 	//echo("touch");
 	%this.setLinearVelocityX(myModule.actualPlayerSpeed);
 	myModule.touchdown=1;
+	alxStop(Guy.jumpsound );
 	 
 }
 		
@@ -177,7 +183,13 @@ function Guy::updateVertical(%this)
 
 function Guy::die(%this){
 	echo("die ");
+	alxStop(Guy.jumpsound );
 	if( myModule.indie==0){
+		if (!alxIsPlaying(myModule.killsound))
+		{
+			// Play the selected music
+         	myModule.killsound = alxPlay("myModule:killSound");
+         	}
 		myModule.indie=1;
 		if(%this.lives>0){
 			
@@ -246,6 +258,7 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 		//echo("1");
 		%this.setLinearVelocityX(myModule.actualPlayerSpeed-%this.groundSpeed);
 		myModule.touchdown=1;
+		//alxStop(Guy.jumpsound );
 		
 		
 	}

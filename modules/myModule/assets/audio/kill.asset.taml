@@ -1,0 +1,6 @@
+<AudioAsset
+    AssetName="killSound"
+    AssetAutoUnload="0"
+    AudioFile="kill.wav"
+    Looping="0"
+    />

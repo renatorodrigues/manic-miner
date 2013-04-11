@@ -236,6 +236,12 @@ function toggleG(%val)
    
       //echo("g key up");
       if(myModule.touchdown==1){
+      	      if (!alxIsPlaying(Guy.jumpsound) && myModule.indie==0)
+		{
+			// Play the selected music
+			echo("start1");
+         	Guy.jumpsound = alxPlay("myModule:jumpSound");
+         	}
       	      myScene.Gravity="0, 0";
 	      if(myModule.gravity==0){
 		      //myScene.Gravity= "0, 9.8";

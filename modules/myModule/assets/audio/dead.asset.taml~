@@ -1,0 +1,6 @@
+<AudioAsset
+    AssetName="backgroundSound"
+    AssetAutoUnload="0"
+    AudioFile="background.wav"
+    Looping="1"
+    />
