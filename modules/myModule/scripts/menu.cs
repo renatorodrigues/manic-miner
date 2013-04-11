@@ -12,14 +12,43 @@ function createMenu(){
 	   hovertime = "1000";
 	};
  
-	
 	new GuiTextCtrl(scoreCounterTitle) {
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "768 660";
+      position = "768 680";
       Extent = "110 40";
       text = "Score:";
+      Visible = "1";
+   };
+   
+    new GuiBitmapCtrl(backmenured) {
+      
+      HorizSizing = "relative";
+      VertSizing = "relative";
+      position = "0 660";
+      Extent = "350 25";
+      Visible = "1";
+      bitmap="artwork/red.png";
+   };
+   
+    new GuiBitmapCtrl(backmenugreen) {
+      
+      HorizSizing = "relative";
+      VertSizing = "relative";
+      position = "350 660";
+      Extent = "674 25";
+      Visible = "1";
+      bitmap="artwork/green.png";
+   };
+   
+   new GuiTextCtrl(fatCounterTitle) {
+      
+      HorizSizing = "relative";
+      VertSizing = "relative";
+      position = "10 655";
+      Extent = "110 40";
+      text = "Fatness:";
       Visible = "1";
    };
    
@@ -27,7 +56,7 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "920 660";
+      position = "920 680";
       Extent = "110 40";
       text = "0";
       Visible = "1";
@@ -46,7 +75,7 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "0 660";
+      position = "0 680";
       Extent = "220 40";
       text = "High Score:";
       Visible = "1";
@@ -56,7 +85,7 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "270 660";
+      position = "270 680";
       Extent = "110 40";
       text = "0";
       Visible = "1";
@@ -66,7 +95,7 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "0 700";
+      position = "0 720";
       Extent = "36 46";
       text = "0";
       Visible = "1";
@@ -76,7 +105,7 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "40 700";
+      position = "40 720";
       Extent = "36 46";
       text = "0";
       Visible = "1";
@@ -86,7 +115,7 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "80 700";
+      position = "80 720";
       Extent = "36 46";
       text = "0";
       Visible = "1";
@@ -97,7 +126,7 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "220 700";
+      position = "220 720";
       Extent = "190 40";
       text = "Items:  ";
       Visible = "1";
@@ -106,13 +135,16 @@ function createMenu(){
       
       HorizSizing = "right";
       VertSizing = "top";
-      position = "360 700";
+      position = "360 720";
       Extent = "0 40";
       text = "0";
       Visible = "1";
    };
+   
 
    menuGui.addGuiControl(backmenu);
+   menuGui.addGuiControl(backmenured);
+   menuGui.addGuiControl(backmenugreen);
    menuGui.addGuiControl(scoreCounterTitle);
    menuGui.addGuiControl(scoreValue);
    menuGui.addGuiControl(highScoreCounterTitle);
@@ -122,6 +154,7 @@ function createMenu(){
    menuGui.addGuiControl(life3);
    menuGui.addGuiControl(itemLable);
    menuGui.addGuiControl(itemCount);
+   menuGui.addGuiControl(fatCounterTitle);
   
    Canvas.pushDialog(menuGui);
    

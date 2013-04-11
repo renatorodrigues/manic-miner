@@ -34,6 +34,6 @@ function addClearingFloor(%x, %y, %w, %h) {
 
 function ClearingFloor::reset(%this){
 	%this.setHeight(%this.initH);
-	%sceneobject.setActive( true );
+	%this.setActive( true );
 }
 
