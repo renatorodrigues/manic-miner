@@ -1,0 +1,9 @@
+<ImageAsset
+    AssetName="fdisk"
+    ImageFile="fdisk.png"
+    FilterMode="Nearest"
+    CellCountX="4"
+    CellCountY="1"
+    CellWidth="32"
+    CellHeight="32"
+    />
