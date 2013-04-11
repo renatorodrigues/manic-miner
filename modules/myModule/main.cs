@@ -152,8 +152,21 @@ function startGame(){
 	control.bind(keyboard, "s", toggleDown); 
 	control.bind(keyboard, "d", playerRight); 
 	control.bind(keyboard, "a", playerLeft); 
+	
+	control.bind(keyboard, "m", backgroundMusicOnOff); 
+}
 
-
+function backgroundMusicOnOff(%val){
+	
+	if(%val){
+		if (!alxIsPlaying(myModule.Handle))
+	      {
+		 // Play the selected music
+		 myModule.Handle = alxPlay("myModule:backgroundSound");
+	      }else{
+		 alxStop(myModule.Handle);     
+		}
+      	}
 }
 
 
