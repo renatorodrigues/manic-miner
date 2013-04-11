@@ -13,7 +13,7 @@ function addCatchable(%x,%y){
   %end.SceneLayer = 5;
   %end.SceneGroup = $ITEM ;
 
-  %end.Image = "myModule:catchable";
+  %end.Animation = "myModule:fdiskAnim";
   %end.UseBackgroundColor = true;
   %end.createEdgeCollisionShape( -%w/2, -%h/2, -%w/2, %h/2 );
   %end.createEdgeCollisionShape( %w/2, -%h/2, %w/2, %h/2);
