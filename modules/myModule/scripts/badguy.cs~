@@ -17,7 +17,7 @@ function spawnBadGuy(%x,%y)
     %guy.Position = %x SPC %y;
 
     // Set the size.        
-    %guy.Size = "4 4";
+    %guy.Size = "3 4";
     %guy.dirChange=0;
     // Set the layer closest to the camera (above the background)
     %guy.SceneLayer = 1;

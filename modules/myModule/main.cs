@@ -74,7 +74,7 @@ function startGame(){
 	myModule.itemCount=0;
 	myModule.indie=0;
 	mySceneWindow.setScene(myScene);
-	//myScene.setDebugOn( "collision" );
+	myScene.setDebugOn( "collision" );
 	//myScene.setDebugOn( "fps" );
 	createBackground();
 	createLevel();

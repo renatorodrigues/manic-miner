@@ -31,6 +31,7 @@ function spawnBadGuy(%x,%y)
     %guy.setLinearVelocityX(%guy.actualSpeed);
     
     // Set the scroller to use an animation!
+    
     %guy.Animation = "myModule:BadGuyAnim";
     
    // %guy.Image = "myModule:fatguy";
@@ -42,7 +43,7 @@ function spawnBadGuy(%x,%y)
     // This creates a box which so that collisions with the screen edges register properly
     // Calling createPolygonBoxCollisionShape() without arguments sets the box to the size of the 
     // sceneobject automatically.
-    %guy.createPolygonBoxCollisionShape(4,3,0,-0.5);
+    %guy.createPolygonBoxCollisionShape(3,3,0,-0.5);
 
   
     
@@ -61,13 +62,17 @@ function spawnBadGuy(%x,%y)
     myScene.add( %guy );  
     %guy.followG=false;
     return %guy;
-    
+     %guy.Animation = "myModule:ObeseGuyAnim";
     
 }
 
 function spawnGravityBadGuy(%x,%y){
 	%guy=spawnBadGuy(%x,%y);
 	%guy.followG=true;
+	%guy.Size = "5 5";
+	%guy.clearCollisionShapes();
+	%guy.createPolygonBoxCollisionShape(5,4,0,-0.5);
+	
 }
 
 function  BadGuy::onUpdate(%this)
@@ -97,12 +102,19 @@ function BadGuy::updateVertical(%this)
 				%this.setAngle(180);
 			}
 			
-			if(%this.getAnimation()$="myModule:BadGuyAnim_Inv"){
+			if(%this.getAnimation()$="myModule:BadGuyAnim_Inv" || %this.getAnimation()$="myModule:ObeseGuyAnim_Inv" ){
 	      	      	
-		      	      %this.playAnimation("myModule:BadGuyAnim");
+		      	      if(%this.followG){
+		      	      	      %this.playAnimation("myModule:ObeseGuyAnim");
+		      	      }else{
+				%this.playAnimation("myModule:BadGuyAnim");
+			      }
 		      }else{
-		      	      
-		      	      %this.playAnimation("myModule:BadGuyAnim_Inv");
+		      	      if(%this.followG){
+		      	      	      %this.playAnimation("myModule:ObeseGuyAnim_Inv");
+		      	      }else{		      	      
+		      	      	      %this.playAnimation("myModule:BadGuyAnim_Inv");
+		      	      }
 		      }
 		
 		}
@@ -111,19 +123,35 @@ function BadGuy::updateVertical(%this)
 	if(%this.gravity==0){
 		%ny=getWord(%this.getRenderPosition(),1)-2.1;
 		%m=2;
+		if(%this.followG){
+			%ny=getWord(%this.getRenderPosition(),1)-2.6;
+			%m=2.1;
+		}
 	}else{
 		%ny=getWord(%this.getRenderPosition(),1)+2.1;
 		%m=-2;
+		if(%this.followG){
+			%ny=getWord(%this.getRenderPosition(),1)+2.6;
+			%m=-2.1;
+		}
+		
 	}
 	if(%this.actualSpeed>0){
+		
 		%nx=getWord(%this.getRenderPosition(),0)+2.1;
+		if(%this.followG){
+			%nx=getWord(%this.getRenderPosition(),0)+3;
+		}
 	}else{
 		%nx=getWord(%this.getRenderPosition(),0)-2.1;
+		if(%this.followG){
+			%nx=getWord(%this.getRenderPosition(),0)-3;
+		}
 	}
 	%down=0;
 	%front=myScene.pickRayCollision(%this.getRenderPosition(),%nx SPC getWord(%this.getRenderPosition(),1));
 	%front1=myScene.pickRayCollision(%this.getRenderPosition(),%nx SPC getWord(%this.getRenderPosition(),1)-%m);
-	%front2=myScene.pickRayCollision(%this.getRenderPosition(),%nx SPC getWord(%this.getRenderPosition(),1)+%m);
+	%front2=myScene.pickRayCollision(%this.getRenderPosition(),%nx SPC getWord(%this.getRenderPosition(),1)+%m-1);
 	%obj[0]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0) SPC %ny);
 	%obj[1]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0)-2 SPC %ny);
 	%obj[2]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0)+2 SPC %ny);
@@ -159,22 +187,41 @@ function BadGuy::updateVertical(%this)
 	%this.tick=0;	
 	}
 	if((%down<3 &&  %down>0 &&%this.followG==false) || (%down<3 && %down>0&&  %this.followG==true) || %front!$="" || %front1!$="" || %front2!$=""){
-		 if((%this.notfall==1 || %front!$="")&&  %this.dirChange==0){
+		if(%this.followG ){
+			echo("@@@@@@@@@@@@@"@%front@" + "@%front1@" + "@%front2@" down - "@%down@" dirChange "@%this.dirChange);
+		}
+		if((%this.notfall==1 || %front!$="")&&  %this.dirChange==0){
 		      	      %this.actualSpeed=-%this.actualSpeed;
 		      	      %this.setLinearVelocityX(%this.actualSpeed);
 		      	     
 		      	     %this.dirChange=1;
 		      	       if(%this.actualSpeed>0){
 		      	       	       if(%this.gravity==0){
-		      	       	       	       %this.playAnimation("myModule:BadGuyAnim");
+		      	       	       	       if(%this.followG){
+		      	       	       	       	       %this.playAnimation("myModule:ObeseGuyAnim");
+		      	       	       	       }else{
+		      	       	       	       	       %this.playAnimation("myModule:BadGuyAnim");
+		      	       	       	       }
 		      	       	       }else{
-		      	       	       	        %this.playAnimation("myModule:BadGuyAnim_Inv");
+		      	       	       	       if(%this.followG){
+		      	       	       	       	       %this.playAnimation("myModule:ObeseGuyAnim_Inv");
+		      	      	      	       }else{
+		      	      	      	       	       %this.playAnimation("myModule:BadGuyAnim_Inv");
+		      	       	       	       }
 		      	       	       }
    	   	 	       }else{
    	   	 	       	       if(%this.gravity!=0){
-		      	       	       	       %this.playAnimation("myModule:BadGuyAnim");
+		      	       	       	 if(%this.followG){
+		      	       	       	       	       %this.playAnimation("myModule:ObeseGuyAnim");
+		      	       	       	       }else{
+		      	       	       	       	       %this.playAnimation("myModule:BadGuyAnim");
+		      	       	       	       }
 		      	       	       }else{
-		      	       	       	        %this.playAnimation("myModule:BadGuyAnim_Inv");
+		      	       	       	       if(%this.followG){
+		      	       	       	       	       %this.playAnimation("myModule:ObeseGuyAnim_Inv");
+		      	      	      	       }else{
+		      	      	      	       	       %this.playAnimation("myModule:BadGuyAnim_Inv");
+		      	       	       	       }
 		      	       	       }
    	   	 	       }
 		      }
@@ -212,6 +259,10 @@ function BadGuy::updateVertical(%this)
 }
 
 function BadGuy::changeDir(%this){
+	
+	if(%this.followG ){
+			echo("@@@@ change dir");
+		}
 	//echo("from: "@%this.actualSpeed@" to: "-%this.actualSpeed);
 			%this.actualSpeed=-%this.actualSpeed;
 		      	      %this.setLinearVelocityX(%this.actualSpeed);
@@ -220,15 +271,31 @@ function BadGuy::changeDir(%this){
 		      	     
 		      	      if(%this.actualSpeed>0){
 		      	       	       if(%this.gravity==0){
-		      	       	       	       %this.playAnimation("myModule:BadGuyAnim");
+		      	       	       	if(%this.followG){
+		      	       	       	       	       %this.playAnimation("myModule:ObeseGuyAnim");
+		      	       	       	       }else{
+		      	       	       	       	       %this.playAnimation("myModule:BadGuyAnim");
+		      	       	       	       }
 		      	       	       }else{
-		      	       	       	        %this.playAnimation("myModule:BadGuyAnim_Inv");
+		      	       	       	       if(%this.followG){
+		      	       	       	       	       %this.playAnimation("myModule:ObeseGuyAnim_Inv");
+		      	      	      	       }else{
+		      	      	      	       	       %this.playAnimation("myModule:BadGuyAnim_Inv");
+		      	       	       	       }
 		      	       	       }
    	   	 	       }else{
    	   	 	       	       if(%this.gravity!=0){
-		      	       	       	       %this.playAnimation("myModule:BadGuyAnim");
+		      	       	       if(%this.followG){
+		      	       	       	       	       %this.playAnimation("myModule:ObeseGuyAnim");
+		      	       	       	       }else{
+		      	       	       	       	       %this.playAnimation("myModule:BadGuyAnim");
+		      	       	       	       }
 		      	       	       }else{
-		      	       	       	        %this.playAnimation("myModule:BadGuyAnim_Inv");
+		      	       	       	       if(%this.followG){
+		      	       	       	       	       %this.playAnimation("myModule:ObeseGuyAnim_Inv");
+		      	      	      	       }else{
+		      	      	      	       	       %this.playAnimation("myModule:BadGuyAnim_Inv");
+		      	       	       	       }
 		      	       	       }
    	   	 	       }
 }
