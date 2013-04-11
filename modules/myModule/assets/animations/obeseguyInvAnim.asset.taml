@@ -2,6 +2,6 @@
     AssetName="ObeseGuyAnim_Inv"
     Image="@asset=myModule:ObeseGuy_Inv"
     AnimationFrames="2 1 0"
-    AnimationTime="0.2"    
+    AnimationTime="0.4"    
     AnimationCycle="true"
 />
