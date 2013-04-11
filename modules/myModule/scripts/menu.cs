@@ -16,7 +16,7 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "768 680";
+      position = "768 690";
       Extent = "110 40";
       text = "Score:";
       Visible = "1";
@@ -27,7 +27,7 @@ function createMenu(){
       HorizSizing = "relative";
       VertSizing = "relative";
       position = "0 660";
-      Extent = "350 25";
+      Extent = "350 30";
       Visible = "1";
       bitmap="artwork/red.png";
    };
@@ -37,9 +37,21 @@ function createMenu(){
       HorizSizing = "relative";
       VertSizing = "relative";
       position = "350 660";
-      Extent = "674 25";
+      Extent = "674 30";
       Visible = "1";
       bitmap="artwork/green.png";
+   };
+   
+   new GuiBitmapCtrl(backmenuwhite) {
+      
+      HorizSizing = "relative";
+      VertSizing = "relative";
+      position = "210 667";
+      Extent = "780 15";
+      maxWidth=780;
+      value=780;
+      Visible = "1";
+      bitmap="artwork/white.png";
    };
    
    new GuiTextCtrl(fatCounterTitle) {
@@ -56,7 +68,7 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "920 680";
+      position = "920 690";
       Extent = "110 40";
       text = "0";
       Visible = "1";
@@ -75,7 +87,7 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "0 680";
+      position = "0 690";
       Extent = "220 40";
       text = "High Score:";
       Visible = "1";
@@ -85,7 +97,7 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "270 680";
+      position = "270 690";
       Extent = "110 40";
       text = "0";
       Visible = "1";
@@ -145,6 +157,7 @@ function createMenu(){
    menuGui.addGuiControl(backmenu);
    menuGui.addGuiControl(backmenured);
    menuGui.addGuiControl(backmenugreen);
+   menuGui.addGuiControl(backmenuwhite);
    menuGui.addGuiControl(scoreCounterTitle);
    menuGui.addGuiControl(scoreValue);
    menuGui.addGuiControl(highScoreCounterTitle);

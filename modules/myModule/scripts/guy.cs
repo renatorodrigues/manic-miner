@@ -52,10 +52,21 @@ function createGuy(%x,%y)
     //Guy.schedule(32, Guy,"onUpdate", Guy);
    
     // Add the sprite to the scene
+    %guy.startTimer(reduce,180,0);
     echo(%guy);
     myScene.add( %guy );  
     
     
+}
+
+function Guy::reduce(%this){
+	//echo("adasda");
+	backmenuwhite.value=backmenuwhite.value-1;
+	backmenuwhite.setExtent(backmenuwhite.value ,getWord(backmenuwhite.getExtent(),1));
+	//echo(backmenuwhite.value);
+	if(backmenuwhite.value<=0){
+		%this.die();
+	}
 }
 
 function Guy::onUpdate(%this)
@@ -203,6 +214,8 @@ function Guy::respawn(%this){
 		for(%i=0;%i<myModule.ncfloor;%i++){
 			myModule.cfloor[%i].reset();
 		}
+		backmenuwhite.setExtent( backmenuwhite.maxWidth,getWord(backmenuwhite.getExtent(),1));
+		backmenuwhite.value=backmenuwhite.maxWidth;
 		%this.alive=1;
 		//myModule.indie=0;
 		%this.schedule(50,setAlive);
