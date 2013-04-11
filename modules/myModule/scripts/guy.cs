@@ -200,6 +200,9 @@ function Guy::respawn(%this){
 			myModule.touchdown=1;
 			toggleG(true);
 		}
+		for(%i=0;%i<myModule.ncfloor;%i++){
+			myModule.cfloor[%i].reset();
+		}
 		%this.alive=1;
 		//myModule.indie=0;
 		%this.schedule(50,setAlive);
