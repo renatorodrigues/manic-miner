@@ -213,6 +213,7 @@ function Guy::die(%this){
 				toggleG(true);
 			}
 			%this.safeDelete();
+			myScene.schedule(50,restartGame);
 		}
 	}
 	

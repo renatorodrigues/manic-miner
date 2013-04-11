@@ -53,6 +53,36 @@ new ActionMap(control);
       }
 }
 
+function myScene::restartGame(){
+	restartGame();
+}
+
+function restartGame(){
+	for(%i=0;%i<myModule.ncfloor;%i++){
+			myModule.cfloor[%i].safeDelete();
+		}
+		
+		
+	for(%i=0;%i<myModule.nfloor;%i++){
+		myModule.floor[%i].safeDelete();
+	}
+	myScene.clear();
+	control.pop();
+	alxStopAll();
+	splash.setVisible(true);
+	life1.setVisible(true); 
+	life2.setVisible(true); 
+	life3.setVisible(true); 
+	myModule.main=1;
+	new ActionMap(control);
+	control.push();
+	control.bind(keyboard, enter, startGame); 
+	if (!alxIsPlaying(myModule.SplashM))
+      {
+         // Play the selected music
+         myModule.SplashM = alxPlay("myModule:welcomeSound");
+      }
+}
 
 function startGame(){
 	if(myModule.main==0){
@@ -68,7 +98,7 @@ function startGame(){
 	myModule.main=0;
 	myModule.badguy=0;
 	myModule.nfloor=0;
-	myModule.cfloor=0;
+	myModule.ncfloor=0;
 	myModule.deleteBlocks=0;
 	myModule.playerSpeed=14;
 	myModule.playerVSpeed=50;
