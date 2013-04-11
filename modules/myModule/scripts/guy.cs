@@ -213,7 +213,7 @@ function Guy::die(%this){
 				toggleG(true);
 			}
 			%this.safeDelete();
-			myScene.schedule(50,restartGame);
+			myScene.schedule(2000,restartGame);
 		}
 	}
 	
@@ -233,7 +233,7 @@ function Guy::respawn(%this){
 		backmenuwhite.value=backmenuwhite.maxWidth;
 		%this.alive=1;
 		//myModule.indie=0;
-		%this.schedule(500,setAlive);
+		%this.schedule(50,setAlive);
 		
 }
 
