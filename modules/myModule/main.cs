@@ -19,6 +19,7 @@ function myModule::create( %this )
 	$MOVING_TILE=4;
 	$ENEMY=10;
 	$ITEM=11;
+	$PLAYER=5;
 exec("./scripts/scenewindow.cs");
 exec("./scripts/scene.cs");
 exec("./gui/guiProfiles.cs");

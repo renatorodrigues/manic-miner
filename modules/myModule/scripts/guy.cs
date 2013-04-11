@@ -43,7 +43,7 @@ function createGuy(%x,%y)
     %guy.lives=3;
     %guy.alive=1;
    
-    
+    %guy.SceneGroup = $PLAYER ;
     //%guy.setCollisionLayers(all);
     %guy.setCollisionCallback( true );
      Guy.stopAnimation();
@@ -185,6 +185,7 @@ function Guy::die(%this){
 	echo("die ");
 	alxStop(Guy.jumpsound );
 	if( myModule.indie==0){
+		echo("yay ");
 		if (!alxIsPlaying(myModule.killsound))
 		{
 			// Play the selected music
@@ -218,6 +219,7 @@ function Guy::die(%this){
 }
 
 function Guy::respawn(%this){
+	echo("respawn ");
 	%this.Position=%this.SpawnPos;
 		if(myModule.gravity!=0){
 			myModule.touchdown=1;

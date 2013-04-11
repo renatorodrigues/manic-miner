@@ -69,10 +69,10 @@ function spawnBadGuy(%x,%y)
 function spawnGravityBadGuy(%x,%y){
 	%guy=spawnBadGuy(%x,%y);
 	%guy.followG=true;
-	%guy.Size = "5 5";
+	%guy.Size = "4 4";
 	%guy.clearCollisionShapes();
 	%guy.Animation = "myModule:ObeseGuyAnim";
-	%guy.createPolygonBoxCollisionShape(5,4,0,-0.5);
+	%guy.createPolygonBoxCollisionShape(4,3,0,-0.5);
 	%guy.actualSpeed=7;
 	%guy.setLinearVelocityX(%guy.actualSpeed);
 	
@@ -125,36 +125,32 @@ function BadGuy::updateVertical(%this)
 	
 	if(%this.gravity==0){
 		%ny=getWord(%this.getRenderPosition(),1)-2.1;
-		%m=2;
-		if(%this.followG){
-			%ny=getWord(%this.getRenderPosition(),1)-2.6;
-			%m=2.1;
-		}
+		%m=1;
+		
 	}else{
 		%ny=getWord(%this.getRenderPosition(),1)+2.1;
-		%m=-2;
-		if(%this.followG){
-			%ny=getWord(%this.getRenderPosition(),1)+2.6;
-			%m=-2.1;
-		}
+		%m=-1;
+		
 		
 	}
 	if(%this.actualSpeed>0){
 		
+		%nx=getWord(%this.getRenderPosition(),0)+2;
+		if(%this.followG){
 		%nx=getWord(%this.getRenderPosition(),0)+2.1;
-		if(%this.followG){
-			%nx=getWord(%this.getRenderPosition(),0)+3;
 		}
+		
 	}else{
-		%nx=getWord(%this.getRenderPosition(),0)-2.1;
+		%nx=getWord(%this.getRenderPosition(),0)-2;
 		if(%this.followG){
-			%nx=getWord(%this.getRenderPosition(),0)-3;
+		%nx=getWord(%this.getRenderPosition(),0)-2.1;
 		}
+		
 	}
 	%down=0;
 	%front=myScene.pickRayCollision(%this.getRenderPosition(),%nx SPC getWord(%this.getRenderPosition(),1));
 	%front1=myScene.pickRayCollision(%this.getRenderPosition(),%nx SPC getWord(%this.getRenderPosition(),1)-%m);
-	%front2=myScene.pickRayCollision(%this.getRenderPosition(),%nx SPC getWord(%this.getRenderPosition(),1)+%m-1);
+	%front2=myScene.pickRayCollision(%this.getRenderPosition(),%nx SPC getWord(%this.getRenderPosition(),1)+%m);
 	%obj[0]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0) SPC %ny);
 	%obj[1]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0)-2 SPC %ny);
 	%obj[2]=myScene.pickRayCollision(%this.getRenderPosition(),getWord(%this.getRenderPosition(),0)+2 SPC %ny);
@@ -189,7 +185,8 @@ function BadGuy::updateVertical(%this)
 		if(%this.tick>15){	
 	%this.tick=0;	
 	}
-	if((%down<3 &&  %down>0 &&%this.followG==false) || (%down<3 && %down>0&&  %this.followG==true) || %front!$="" || %front1!$="" || %front2!$=""){
+
+	if((%down<3 &&  %down>0 &&%this.followG==false) || (%down<3 && %down>0&&  %this.followG==true) || (%front!$=""&&%front.getSceneGroup()!=$PLAYER) || (%front1!$="" && %front1.getSceneGroup()!=$PLAYER) || (%front2!$="" && %front2.getSceneGroup()!=$PLAYER)){
 		if(%this.followG ){
 			echo("@@@@@@@@@@@@@"@%front@" + "@%front1@" + "@%front2@" down - "@%down@" dirChange "@%this.dirChange);
 		}
@@ -319,6 +316,7 @@ function BadGuy::onCollision(%this, %sceneobject, %collisiondetails)
 		
 		
 	}
+	
 	
 	if(%sceneobject.getSceneGroup()==$CLEAR_TILE){
 		//echo("2");

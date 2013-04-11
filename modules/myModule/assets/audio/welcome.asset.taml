@@ -1,0 +1,6 @@
+<AudioAsset
+    AssetName="welcomeSound"
+    AssetAutoUnload="0"
+    AudioFile="welcome.wav"
+    Looping="1"
+    />
