@@ -32,6 +32,16 @@ function createMenu(){
       bitmap="artwork/red.png";
    };
    
+   new GuiBitmapCtrl(splash) {
+      
+      HorizSizing = "relative";
+      VertSizing = "relative";
+      position = "0 0";
+      Extent = "1024 768";
+      Visible = "1";
+      bitmap="artwork/manic_vidal_splash copy.png";
+   };
+   
     new GuiBitmapCtrl(backmenugreen) {
       
       HorizSizing = "relative";
@@ -168,7 +178,7 @@ function createMenu(){
    menuGui.addGuiControl(itemLable);
    menuGui.addGuiControl(itemCount);
    menuGui.addGuiControl(fatCounterTitle);
-  
+   menuGui.addGuiControl(splash);
    Canvas.pushDialog(menuGui);
    
 }
