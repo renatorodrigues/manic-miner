@@ -19,6 +19,7 @@ function myModule::create( %this )
 	$MOVING_TILE=4;
 	$ENEMY=10;
 	$ITEM=11;
+	$PLAYER=5;
 exec("./scripts/scenewindow.cs");
 exec("./scripts/scene.cs");
 exec("./gui/guiProfiles.cs");
@@ -45,13 +46,49 @@ myModule.main=1;
 new ActionMap(control);
 	control.push();
 	control.bind(keyboard, enter, startGame); 
+	if (!alxIsPlaying(myModule.SplashM))
+      {
+         // Play the selected music
+         myModule.SplashM = alxPlay("myModule:welcomeSound");
+      }
 }
 
+function myScene::restartGame(){
+	restartGame();
+}
+
+function restartGame(){
+	for(%i=0;%i<myModule.ncfloor;%i++){
+			myModule.cfloor[%i].safeDelete();
+		}
+		
+		
+	for(%i=0;%i<myModule.nfloor;%i++){
+		myModule.floor[%i].safeDelete();
+	}
+	myScene.clear();
+	control.pop();
+	alxStopAll();
+	splash.setVisible(true);
+	life1.setVisible(true); 
+	life2.setVisible(true); 
+	life3.setVisible(true); 
+	myModule.main=1;
+	new ActionMap(control);
+	control.push();
+	control.bind(keyboard, enter, startGame); 
+	if (!alxIsPlaying(myModule.SplashM))
+      {
+         // Play the selected music
+         myModule.SplashM = alxPlay("myModule:welcomeSound");
+      }
+}
 
 function startGame(){
 	if(myModule.main==0){
 		return;
 	}
+	alxStop(myModule.SplashM);
 	if (!alxIsPlaying(myModule.Handle))
       {
          // Play the selected music
@@ -61,7 +98,7 @@ function startGame(){
 	myModule.main=0;
 	myModule.badguy=0;
 	myModule.nfloor=0;
-	myModule.cfloor=0;
+	myModule.ncfloor=0;
 	myModule.deleteBlocks=0;
 	myModule.playerSpeed=14;
 	myModule.playerVSpeed=50;
@@ -115,8 +152,21 @@ function startGame(){
 	control.bind(keyboard, "s", toggleDown); 
 	control.bind(keyboard, "d", playerRight); 
 	control.bind(keyboard, "a", playerLeft); 
+	
+	control.bind(keyboard, "m", backgroundMusicOnOff); 
+}
 
-
+function backgroundMusicOnOff(%val){
+	
+	if(%val){
+		if (!alxIsPlaying(myModule.Handle))
+	      {
+		 // Play the selected music
+		 myModule.Handle = alxPlay("myModule:backgroundSound");
+	      }else{
+		 alxStop(myModule.Handle);     
+		}
+      	}
 }
 
 
@@ -236,6 +286,12 @@ function toggleG(%val)
    
       //echo("g key up");
       if(myModule.touchdown==1){
+      	      if (!alxIsPlaying(Guy.jumpsound) && myModule.indie==0)
+		{
+			// Play the selected music
+			echo("start1");
+         	Guy.jumpsound = alxPlay("myModule:jumpSound");
+         	}
       	      myScene.Gravity="0, 0";
 	      if(myModule.gravity==0){
 		      //myScene.Gravity= "0, 9.8";

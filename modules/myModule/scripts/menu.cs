@@ -32,16 +32,33 @@ function createMenu(){
       bitmap="artwork/red.png";
    };
    
-   new GuiBitmapCtrl(splash) {
+   
+   new GuiControl(splashui) {
+	   canSaveDynamicFields = "0";
+	   Profile = "GuiDefaultProfile";   
+	   HorizSizing = "right";
+	   VertSizing = "bottom";
+	   position = "0 0";
+	   Extent = "1024 768";
+	   MinExtent = "8 2";
+	   canSave = "1";
+	   Visible = "1";
+	   hovertime = "1000";
+	   isContainer=true;
+
+	   
+	    new GuiBitmapCtrl(splash) {
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "0 0";
-      Extent = "1024 768";
+      position = "32 24";
+      Extent = "960 720";
       Visible = "1";
       bitmap="artwork/manic_vidal_splash copy.png";
    };
    
+	};
+  
     new GuiBitmapCtrl(backmenugreen) {
       
       HorizSizing = "relative";
@@ -163,6 +180,8 @@ function createMenu(){
       Visible = "1";
    };
    
+   
+   
 
    menuGui.addGuiControl(backmenu);
    menuGui.addGuiControl(backmenured);
@@ -178,7 +197,73 @@ function createMenu(){
    menuGui.addGuiControl(itemLable);
    menuGui.addGuiControl(itemCount);
    menuGui.addGuiControl(fatCounterTitle);
-   menuGui.addGuiControl(splash);
-   Canvas.pushDialog(menuGui);
    
+   //menuGui.addGuiControl(splash);
+ //  Canvas.pushDialog(menuGui);
+  // menuGui.setVisible(false);
+  // Canvas.pushDialog(splashui);
+   
+   
+}
+
+
+function showIngame(){
+	GuiDefaultProfile.stopTimer();
+	Canvas.BackgroundColor="black";
+	Canvas.pushDialog(menuGui);
+   
+   Canvas.popDialog(splashui);
+
+}
+
+
+function GuiDefaultProfile::colorChange(){
+	
+	myModule.colorB=getRandom(1,7);
+	
+	//black	blue	red 	magenta green	cyan yellow white
+	if(myModule.colorB==0){
+		Canvas.BackgroundColor="black";
+	}
+	
+	if(myModule.colorB==1){
+		Canvas.BackgroundColor="blue";
+	}
+	
+	if(myModule.colorB==2){
+		Canvas.BackgroundColor="red";
+	}
+	
+	if(myModule.colorB==3){
+		Canvas.BackgroundColor="magenta";
+	}
+	
+	if(myModule.colorB==4){
+		Canvas.BackgroundColor="green";
+	}
+	
+	if(myModule.colorB==5){
+		Canvas.BackgroundColor="cyan";
+	}
+	if(myModule.colorB==6){
+		Canvas.BackgroundColor="yellow";
+	}
+	
+	if(myModule.colorB==7){
+		Canvas.BackgroundColor="white";
+	}
+	
+	
+	
+	
+	
+	
+}
+
+function showSplash(){
+	GuiDefaultProfile.startTimer(colorChange,1000);
+	GuiDefaultProfile.colorChange();
+	Canvas.popDialog(menuGui);
+	Canvas.pushDialog(splashui);
+
 }

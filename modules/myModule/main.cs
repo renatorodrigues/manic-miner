@@ -43,6 +43,8 @@ createScene();
 createMenu();
 //splash.setVisibility(1);
 myModule.main=1;
+myModule.colorB=0;
+showSplash();
 new ActionMap(control);
 	control.push();
 	control.bind(keyboard, enter, startGame); 
@@ -69,7 +71,8 @@ function restartGame(){
 	myScene.clear();
 	control.pop();
 	alxStopAll();
-	splash.setVisible(true);
+	//splash.setVisible(true);
+	showSplash();
 	life1.setVisible(true); 
 	life2.setVisible(true); 
 	life3.setVisible(true); 
@@ -94,7 +97,10 @@ function startGame(){
          // Play the selected music
          myModule.Handle = alxPlay("myModule:backgroundSound");
       }
-	splash.setVisible(false); 
+      	//canvasSplash.setVisible(false); 
+	//splash.setVisible(false); 
+	//Canvas.popDialog(splashui);
+	showIngame();
 	myModule.main=0;
 	myModule.badguy=0;
 	myModule.nfloor=0;
