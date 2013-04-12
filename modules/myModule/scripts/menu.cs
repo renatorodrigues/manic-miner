@@ -246,29 +246,36 @@ function GuiDefaultProfile::colorChange(){
 		}
 		
 		if(myModule.colorB==1){
-			Canvas.BackgroundColor="blue";
+			Canvas.BackgroundColor="0 0 0.804 1";
+			//Canvas.BackgroundColor="blue";
 		}
 		
 		if(myModule.colorB==2){
+			//Canvas.BackgroundColor="1 0 0 1";
 			Canvas.BackgroundColor="red";
 		}
 		
 		if(myModule.colorB==3){
-			Canvas.BackgroundColor="magenta";
+			Canvas.BackgroundColor="0.804 0 0.047 1";
+			//Canvas.BackgroundColor="magenta";
 		}
 		
 		if(myModule.colorB==4){
-			Canvas.BackgroundColor="green";
+			
+			Canvas.BackgroundColor="0.172 1 0 1";
 		}
 		
 		if(myModule.colorB==5){
-			Canvas.BackgroundColor="cyan";
+			Canvas.BackgroundColor="0 0.804 0.804 1";
+			//Canvas.BackgroundColor="cyan";
 		}
 		if(myModule.colorB==6){
-			Canvas.BackgroundColor="yellow";
+			Canvas.BackgroundColor="0.804 0.804 0 1";
+			//Canvas.BackgroundColor="yellow";
 		}
 		
 		if(myModule.colorB==7){
+			Canvas.BackgroundColor="0.804 0.804 0.804 1";
 			Canvas.BackgroundColor="white";
 		}
 		
