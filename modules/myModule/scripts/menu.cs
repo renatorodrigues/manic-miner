@@ -49,13 +49,30 @@ function createMenu(){
 	   
 	    new GuiBitmapCtrl(splash) {
       
-      HorizSizing = "relative";
-      VertSizing = "relative";
-      position = "32 24";
-      Extent = "960 720";
-      Visible = "1";
-      bitmap="artwork/manic_vidal_splash copy.png";
-   };
+	      HorizSizing = "relative";
+	      VertSizing = "relative";
+	      position = "32 24";
+	      Extent = "960 720";
+	      Visible = "1";
+	      bitmap="artwork/manic_vidal_splash copy.png";
+	      isContainer=true;
+	      
+	    
+	      	      
+	      	      
+	      	      
+	      	 new GuiMLTextCtrl(subtitle){
+	      	 	 HorizSizing = "relative";
+		      VertSizing = "relative";
+		      position = "960 680";
+		      Extent = "20000 40";
+		      Visible = "1";
+		      text="DJCO 2013 #### Bruno Maia # Pedro Borges # Renato Rodrigues ### Music and soundfx from original Manic Miner for zx Spectrum by Matthew Smith";
+	      	 };    
+	      
+	   };
+	   
+	   
    
 	};
   
@@ -218,42 +235,49 @@ function showIngame(){
 
 
 function GuiDefaultProfile::colorChange(){
-	
-	myModule.colorB=getRandom(1,7);
-	
-	//black	blue	red 	magenta green	cyan yellow white
-	if(myModule.colorB==0){
-		Canvas.BackgroundColor="black";
+	subtitle.position=myModule.xScroller SPC 680;
+	if(myModule.tickSplash>getRandom(20,30)){
+		myModule.tickSplash=0;
+		myModule.colorB=getRandom(1,7);
+		
+		//black	blue	red 	magenta green	cyan yellow white
+		if(myModule.colorB==0){
+			Canvas.BackgroundColor="black";
+		}
+		
+		if(myModule.colorB==1){
+			Canvas.BackgroundColor="blue";
+		}
+		
+		if(myModule.colorB==2){
+			Canvas.BackgroundColor="red";
+		}
+		
+		if(myModule.colorB==3){
+			Canvas.BackgroundColor="magenta";
+		}
+		
+		if(myModule.colorB==4){
+			Canvas.BackgroundColor="green";
+		}
+		
+		if(myModule.colorB==5){
+			Canvas.BackgroundColor="cyan";
+		}
+		if(myModule.colorB==6){
+			Canvas.BackgroundColor="yellow";
+		}
+		
+		if(myModule.colorB==7){
+			Canvas.BackgroundColor="white";
+		}
+		
 	}
-	
-	if(myModule.colorB==1){
-		Canvas.BackgroundColor="blue";
+	myModule.tickSplash++;
+	myModule.xScroller=myModule.xScroller-4;
+	if(myModule.xScroller<myModule.xScrollerlimit){
+		myModule.xScroller=1200;
 	}
-	
-	if(myModule.colorB==2){
-		Canvas.BackgroundColor="red";
-	}
-	
-	if(myModule.colorB==3){
-		Canvas.BackgroundColor="magenta";
-	}
-	
-	if(myModule.colorB==4){
-		Canvas.BackgroundColor="green";
-	}
-	
-	if(myModule.colorB==5){
-		Canvas.BackgroundColor="cyan";
-	}
-	if(myModule.colorB==6){
-		Canvas.BackgroundColor="yellow";
-	}
-	
-	if(myModule.colorB==7){
-		Canvas.BackgroundColor="white";
-	}
-	
-	
 	
 	
 	
@@ -261,7 +285,9 @@ function GuiDefaultProfile::colorChange(){
 }
 
 function showSplash(){
-	GuiDefaultProfile.startTimer(colorChange,1000);
+	myModule.xScroller=1200;
+	myModule.xScrollerlimit=-3500;
+	GuiDefaultProfile.startTimer(colorChange,50);
 	GuiDefaultProfile.colorChange();
 	Canvas.popDialog(menuGui);
 	Canvas.pushDialog(splashui);

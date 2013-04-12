@@ -44,6 +44,7 @@ createMenu();
 //splash.setVisibility(1);
 myModule.main=1;
 myModule.colorB=0;
+myModule.xScroller=960;
 showSplash();
 new ActionMap(control);
 	control.push();
@@ -60,6 +61,7 @@ function myScene::restartGame(){
 }
 
 function restartGame(){
+	
 	for(%i=0;%i<myModule.ncfloor;%i++){
 			myModule.cfloor[%i].safeDelete();
 		}
@@ -72,6 +74,7 @@ function restartGame(){
 	control.pop();
 	alxStopAll();
 	//splash.setVisible(true);
+	
 	showSplash();
 	life1.setVisible(true); 
 	life2.setVisible(true); 
