@@ -102,9 +102,9 @@ function createMenu(){
       
       HorizSizing = "relative";
       VertSizing = "relative";
-      position = "10 655";
+      position = "2 655";
       Extent = "110 40";
-      text = "Fatness:";
+      text = "Calories:";
       Visible = "1";
    };
    
