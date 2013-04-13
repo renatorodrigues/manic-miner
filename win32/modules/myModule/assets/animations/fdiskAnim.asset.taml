@@ -1,0 +1,7 @@
+<AnimationAsset
+    AssetName="fdiskAnim"
+    Image="@asset=myModule:fdisk"
+    AnimationFrames="0 1 2 3"
+    AnimationTime="0.3"    
+    AnimationCycle="true"
+/>

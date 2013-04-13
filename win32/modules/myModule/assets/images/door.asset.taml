@@ -1,0 +1,9 @@
+<ImageAsset
+    AssetName="door"
+    ImageFile="door.png"
+    FilterMode="Nearest"
+    CellCountX="1"
+    CellCountY="1"
+    CellWidth="64"
+    CellHeight="64"
+    />

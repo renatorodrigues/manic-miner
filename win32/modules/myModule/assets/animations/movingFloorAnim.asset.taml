@@ -1,0 +1,7 @@
+<AnimationAsset
+    AssetName="movingFloorAnim"
+    Image="@asset=myModule:movingFloor"
+    AnimationFrames="0 1 2"
+    AnimationTime="0.3"    
+    AnimationCycle="true"
+/>

@@ -1,0 +1,7 @@
+<AnimationAsset
+    AssetName="BadGuyAnim_Inv"
+    Image="@asset=myModule:BadGuy_Inv"
+    AnimationFrames="2 1 0"
+    AnimationTime="0.2"     
+    AnimationCycle="true"
+/>

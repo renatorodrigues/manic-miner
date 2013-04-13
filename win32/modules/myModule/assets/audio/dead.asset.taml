@@ -1,0 +1,6 @@
+<AudioAsset
+    AssetName="deadSound"
+    AssetAutoUnload="0"
+    AudioFile="dead.wav"
+    Looping="0"
+    />

@@ -1,0 +1,9 @@
+<ImageAsset
+    AssetName="ObeseGuy"
+    ImageFile="obeseguy.png"
+    FilterMode="Nearest"
+    CellCountX="3"
+    CellCountY="1"
+    CellWidth="14"
+    CellHeight="17"
+    />
