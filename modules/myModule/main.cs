@@ -315,14 +315,13 @@ function toggleG(%val)
 		      Guy.setAngle(180);
 		      myModule.touchdown=0;
 		      
-		      Guy.BlueScreen();
+		     
 	      }else{
 		       //myScene.Gravity="0, -9.8";
 		       Guy.setLinearVelocityY(-myModule.playerVSpeed);
 		       myModule.gravity=0;
 		       Guy.setAngle(0);
-		       myModule.touchdown=0;
-		       Guy.RedScreen();
+		       myModule.touchdown=0 Guy.RedScreen();
 		       
 	      }
 	      echo(Guy.getAnimation());
