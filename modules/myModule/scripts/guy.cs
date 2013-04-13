@@ -247,6 +247,16 @@ function Guy::BlackScreen(){
 	Canvas.BackgroundColor="black";
 }
 
+function Guy::BlueScreen(){
+	Canvas.BackgroundColor="blue";
+	Guy.startTimer("BlackScreen",50);
+}
+
+function Guy::RedScreen(){
+	Canvas.BackgroundColor="red";
+	Guy.startTimer("BlackScreen",50);
+}
+
 function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 {
 	//echo("col "@myModule.indie);

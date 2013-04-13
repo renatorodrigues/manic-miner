@@ -292,9 +292,11 @@ function toggleDown(%val){
 
 function toggleG(%val)
 {
+
 	//Guy.onUpdate();
    if(%val)
    {
+
       //echo("g key down");
    
       //echo("g key up");
@@ -313,13 +315,14 @@ function toggleG(%val)
 		      Guy.setAngle(180);
 		      myModule.touchdown=0;
 		      
-		      
+		      Guy.BlueScreen();
 	      }else{
 		       //myScene.Gravity="0, -9.8";
 		       Guy.setLinearVelocityY(-myModule.playerVSpeed);
 		       myModule.gravity=0;
 		       Guy.setAngle(0);
 		       myModule.touchdown=0;
+		       Guy.RedScreen();
 		       
 	      }
 	      echo(Guy.getAnimation());
