@@ -315,7 +315,7 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 	if(%sceneobject.getSceneGroup()==$END_PLACE){
 		if(%this.catchedItems==myModule.itemCount){
 			echo("END");
-			%this.Position=%this.SpawnPos;
+			//%this.Position=%this.SpawnPos;
 			myModule.gravity=0;
 			if(myModule.gravity!=0){
 				myModule.touchdown=1;
