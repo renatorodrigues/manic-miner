@@ -321,7 +321,7 @@ function toggleG(%val)
 		       Guy.setLinearVelocityY(-myModule.playerVSpeed);
 		       myModule.gravity=0;
 		       Guy.setAngle(0);
-		       myModule.touchdown=0 Guy.RedScreen();
+		       myModule.touchdown=0;
 		       
 	      }
 	      echo(Guy.getAnimation());
