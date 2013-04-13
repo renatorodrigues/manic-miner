@@ -105,7 +105,7 @@ function createMenu(){
       position = "2 655";
       Extent = "110 40";
       text = "Calories:";
-      Visible = "1";
+      Visible = "1";                                         
    };
    
    new GuiTextCtrl(scoreValue) {
