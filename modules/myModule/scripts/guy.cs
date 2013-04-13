@@ -317,6 +317,12 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 			echo("END");
 			%this.Position=%this.SpawnPos;
 			myModule.gravity=0;
+			if(myModule.gravity!=0){
+				myModule.touchdown=1;
+				toggleG(true);
+			}
+			%this.safeDelete();
+			myScene.schedule(1000,restartGame);
 		}
 	}
 	
