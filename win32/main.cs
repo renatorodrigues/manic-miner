@@ -21,7 +21,7 @@
 //-----------------------------------------------------------------------------
 
 // Set log mode.
-setLogMode(2);
+setLogMode(0);
 
 // Set profiler.
 //profilerEnable( true );
