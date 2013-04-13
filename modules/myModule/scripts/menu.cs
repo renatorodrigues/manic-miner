@@ -189,10 +189,10 @@ function createMenu(){
    };
    new GuiTextCtrl(itemCount) {
       
-      HorizSizing = "right";
-      VertSizing = "top";
+      HorizSizing = "relative";
+      VertSizing = "relative";
       position = "360 720";
-      Extent = "0 40";
+      Extent = "0 40";  
       text = "0";
       Visible = "1";
    };
