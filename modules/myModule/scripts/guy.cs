@@ -182,6 +182,7 @@ function Guy::updateVertical(%this)
 }
 
 function Guy::die(%this){
+
 	echo("die ");
 	alxStop(Guy.jumpsound );
 	if( myModule.indie==0){
@@ -213,7 +214,7 @@ function Guy::die(%this){
 				toggleG(true);
 			}
 			%this.safeDelete();
-			myScene.schedule(2000,restartGame);
+			myScene.schedule(1000,restartGame);
 		}
 	}
 	
@@ -240,6 +241,10 @@ function Guy::respawn(%this){
 function Guy::setAlive(){
 	//echo("alive");
 	myModule.indie=0;
+}
+
+function Guy::BlackScreen(){
+	Canvas.BackgroundColor="black";
 }
 
 function Guy::onCollision(%this, %sceneobject, %collisiondetails)
@@ -285,7 +290,9 @@ function Guy::onCollision(%this, %sceneobject, %collisiondetails)
 	}
 	if(%sceneobject.getSceneGroup()==$ENEMY && myModule.indie==0){
 		 
-		 
+		Canvas.BackgroundColor="red"; 
+		//Guy.startTimer("BlackScreen",50,1);
+		myScene.schedule(75,BlackScreen);
 		//echo("dead "@myModule.indie);
 		%this.die();
 	}

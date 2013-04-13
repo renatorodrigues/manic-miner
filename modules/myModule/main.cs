@@ -60,6 +60,10 @@ function myScene::restartGame(){
 	restartGame();
 }
 
+function myScene::BlackScreen(){
+	Canvas.BackgroundColor="black";
+}
+
 function restartGame(){
 	
 	for(%i=0;%i<myModule.ncfloor;%i++){

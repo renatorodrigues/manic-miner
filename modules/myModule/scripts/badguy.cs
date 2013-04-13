@@ -73,7 +73,7 @@ function spawnGravityBadGuy(%x,%y){
 	%guy.clearCollisionShapes();
 	%guy.Animation = "myModule:ObeseGuyAnim";
 	%guy.createPolygonBoxCollisionShape(4,3,0,-0.5);
-	%guy.actualSpeed=7;
+	%guy.actualSpeed=10;
 	%guy.setLinearVelocityX(%guy.actualSpeed);
 	
 }
